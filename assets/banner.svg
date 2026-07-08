@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160">
+  <title>ISATVON Prompting — structured prompting for any AI</title>
+  <rect width="640" height="160" rx="12" fill="#2E3440"/>
+  <!-- prompt/response mark: chevron in, structured lines out -->
+  <g transform="translate(28,28)">
+    <circle cx="52" cy="52" r="34" fill="none" stroke="#4C566A" stroke-width="8"/>
+    <path d="M 34 36 l 14 16 l -14 16" fill="none" stroke="#88C0D0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 58 40 h 16 M 58 52 h 16 M 58 64 h 16" fill="none" stroke="#A3BE8C" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="160" y="70" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="4" fill="#ECEFF4">ISATVON PROMPTING</text>
+  <text x="162" y="106" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#D8DEE9">Structured prompting for any AI</text>
+  <text x="162" y="132" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#81A1C1">I · S · A · T · V · O · N — structure the ask, get a structured answer</text>
+</svg>
