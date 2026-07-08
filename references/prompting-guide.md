@@ -46,7 +46,7 @@ into a section of a text prompt, with a good and a weak example line for each.
 ## O — Outcome (exact response contract)
 
 **Purpose:** The precise shape of the reply. In ISATVON prompting, O always embeds the
-[ISATVON response structure](response-format.md), making the answer itself auditable.
+ISATVON response structure (see `references/response-format.md`), making the answer itself auditable.
 
 - Good: "Respond in ISATVON format; your O section is a 3-bullet summary followed by a one-line recommendation."
 - Weak: "Give me a good summary." *(shape unspecified)*

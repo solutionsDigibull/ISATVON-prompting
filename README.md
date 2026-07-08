@@ -84,6 +84,7 @@ isatvon-prompting/
 │   └── response-format.md            # the structured-response contract
 ├── examples/                         # before/after conversions: generic, ChatGPT, Claude,
 │                                     #   Gemini, Perplexity, Copilot, Grok
+├── EVALS.md                          # recorded trigger-eval transcripts
 ├── INSTALL.md · CITATIONS.md · CHANGELOG.md · CONTRIBUTING.md · LICENSE
 └── assets/banner.svg
 ```

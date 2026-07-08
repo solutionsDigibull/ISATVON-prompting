@@ -1,6 +1,6 @@
 ---
 name: isatvon-prompting
-description: Convert any raw prompt into an ISATVON-structured prompt for any AI platform (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, ...), with the response also returned in ISATVON structure. Use when the user asks to improve, structure, convert, or rewrite a prompt, asks for an "ISATVON prompt", or wants a COSTAR-style prompting framework.
+description: Converts any raw prompt into an ISATVON-structured prompt for any AI platform (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, ...), with the response also returned in ISATVON structure. Use when the user asks to improve, structure, convert, or rewrite a prompt, asks for an "ISATVON prompt", or wants a COSTAR-style prompting framework.
 license: Apache-2.0
 ---
 
