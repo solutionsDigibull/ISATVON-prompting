@@ -10,7 +10,11 @@ You rewrite a raw, unstructured prompt into an **ISATVON-structured prompt**: se
 sections (I-S-A-T-V-O-N) that work on any AI platform and instruct the model to return its
 **answer in ISATVON structure too** — so both the ask and the response are auditable.
 
-Think COSTAR, plus verification, tool policy, and constraints with fallbacks.
+Think COSTAR, plus the two mechanisms it lacks: the **A section's self-verification**
+(the model checks word counts and constraints before answering) and a hard
+**anti-fabrication rule** (never invent figures or citations). In blind benchmarking these
+were exactly the failure classes that separated the two — CO-STAR outputs invented
+statistics; ISATVON outputs did not.
 
 Element guide: [references/prompting-guide.md](references/prompting-guide.md) ·
 COSTAR mapping: [references/costar-comparison.md](references/costar-comparison.md)
@@ -21,6 +25,17 @@ COSTAR mapping: [references/costar-comparison.md](references/costar-comparison.m
 - The user wants a reusable, high-quality prompt for ChatGPT, Claude, Gemini, Perplexity,
   Copilot, Grok, or any other AI platform.
 - The user mentions COSTAR or asks for a prompting framework.
+
+Where it measurably helps most: **writing/content and constraint-heavy tasks** (blind
+benchmark: 4.70/5 vs 3.40 baseline). For pure reasoning or coding one-liners, baseline
+models already score ~4.8–5.0 — use **Lite mode** (below) or skip conversion.
+
+## How NOT to use
+
+Send the converted prompt as the **user message**. Do not condense ISATVON's rules into a
+system prompt or "custom instructions": in benchmarking, that mechanism was ignored in 8/8
+runs (replicated in a clean session and on a stronger model) and scored *below* baseline.
+The framework only works as a full prompt rewrite.
 
 Do NOT use for generating ISATVON **skill manifests** (JSON contracts for agent loops) —
 that is the [isatvon](https://github.com/isatvon/isatvon) skill. This skill produces
@@ -33,6 +48,14 @@ that is the [isatvon](https://github.com/isatvon/isatvon) skill. This skill prod
 Read the raw prompt. Identify the task, the implicit audience, and the desired deliverable.
 Ask at most 1–2 questions, and only if the goal is genuinely ambiguous — otherwise state
 your assumptions in the converted prompt's N section and proceed.
+
+Then triage the mode:
+
+- **Lite (I + O + N)** — the task is a self-contained reasoning, coding, or one-shot
+  question with no constraints to enforce and no external sources to ground. Use
+  [templates/prompt-template-lite.md](templates/prompt-template-lite.md).
+- **Full (all 7 sections)** — everything else: writing/content, specs, multi-constraint,
+  or source-grounded tasks. This is the default.
 
 ### 2. Fill the seven sections
 
@@ -51,12 +74,19 @@ Start from [templates/prompt-template.md](templates/prompt-template.md):
 Every section must be filled — if the raw prompt gives nothing for a section, supply a
 sensible default rather than dropping it.
 
+**Exception (precedence rule):** if the *deliverable itself* is unknowable from the raw
+prompt (e.g. "Help me improve this." with nothing attached), do not invent one. The
+converted prompt's I section instructs the model to ask 1 clarifying question first; V's
+fallback governs. "Fill every section" applies to *supporting* sections (S, T, V
+defaults), never to fabricating the task.
+
 ### 3. Require an ISATVON response
 
 The O section always instructs the model to structure its reply as
 I (task as understood) → S (sources used) → A (how it verified) → V (constraints honored
 or broken) → O (the deliverable itself) → N (assumptions & confidence). Copy the skeleton
 from [references/response-format.md](references/response-format.md) verbatim into O.
+Lite prompts embed the compact 3-line skeleton (I / O / N) from the same file instead.
 
 ### 4. Tailor to the platform (if named)
 

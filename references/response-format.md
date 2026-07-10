@@ -20,6 +20,22 @@ Structure your entire response in ISATVON format:
 Replace `[EXACT SHAPE]` with the deliverable's precise format (e.g. "a 5-row markdown
 table with columns X, Y, Z").
 
+## Compact skeleton (Lite mode)
+
+For Lite prompts (self-contained questions, no constraints or sources), the O section may
+embed this 3-line skeleton instead — it keeps the wrong-problem check (I) and the
+assumptions report (N) while dropping the sections that would be empty:
+
+```
+Structure your response as:
+
+- **I** — the task as you understood it (1 sentence)
+- **O** — the answer itself: [EXACT SHAPE]
+- **N** — assumptions made, confidence (high/medium/low)
+```
+
+The 6-section skeleton above remains the default whenever S, A, or V carry real content.
+
 ## What each response section buys you
 
 | Section | Catches |

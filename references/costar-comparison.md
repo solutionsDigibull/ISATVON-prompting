@@ -20,6 +20,15 @@ declared fallbacks.
 | *(no equivalent)* | **T** — Tech stack | Capabilities allowed/forbidden (search, code, citations) |
 | *(no equivalent)* | **N** — Notification | Mandatory assumptions/confidence/omissions report |
 
+## What the A section catches that COSTAR can't
+
+COSTAR has no verification slot, so nothing stops the model from shipping unchecked
+claims. In blind benchmarking this showed up concretely: a CO-STAR-framed launch email
+invented a "40% fewer interruptions" statistic; the ISATVON version of the same task
+self-verified its word count and constraint list before answering and invented nothing,
+because A ends with an explicit self-check and I carries a "never invent figures" rule.
+That verification step — not the section count — is the framework's real edge.
+
 ## When to use which
 
 - **COSTAR** is lighter and fine for one-shot stylistic tasks: a tweet, a rewrite, a tone

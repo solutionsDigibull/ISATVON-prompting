@@ -1,7 +1,9 @@
 # ISATVON Prompt Template
 
-Copy everything below the line into any AI chat and replace the placeholders.
+Copy everything below the line into any AI chat **as your message** — not into a system
+prompt or custom instructions (there the structure gets ignored). Replace the placeholders.
 Every section is required — supply a sensible default rather than deleting one.
+For simple self-contained questions, use [prompt-template-lite.md](prompt-template-lite.md) instead.
 
 ---
 
@@ -34,7 +36,7 @@ You must not: [FORBIDDEN — e.g. "fabricate citations; run code; browse"].
 - Tone: [e.g. "direct, no hype"]
 - Audience: [e.g. "CFO, non-technical"]
 - Format limits: [e.g. "no tables; bullets only in O"]
-- Fallback: if any constraint cannot be met, say which and why. Ask at most 1 clarifying question, and only if the task is impossible without it.
+- Fallback: if any constraint cannot be met, say which and why. Ask at most 1 clarifying question, and only if the task is impossible without it. (If the deliverable itself is unknowable, asking first takes precedence over filling sections with invented defaults.)
 
 ## O — Outcome
 
