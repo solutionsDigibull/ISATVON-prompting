@@ -1,0 +1,239 @@
+/* ISATVON Prompting — neo-brutalist design system on Tailwind v4.
+   Thick ink borders, hard offset shadows, Bebas Neue display type, flat accents.
+   One-off layout lives as utilities in the JSX; only repeated primitives get
+   component classes here. */
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff3e00;
+  --color-primary-hover: #ff6d43;
+  --color-secondary: #4d61ff;
+  --color-yellow: #f5e642;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #333333;
+  --color-ink-mute: #555555;
+  --color-paper: #f5f5f0;
+  --color-red-brand: #e8180a;
+  --color-green-brand: #00e060;
+  --color-pattern: #cfcfcf;
+
+  --shadow-brutal: 8px 8px 0 var(--color-ink);
+  --shadow-brutal-sm: 4px 4px 0 var(--color-ink);
+  --shadow-brutal-xs: 3px 3px 0 var(--color-ink);
+
+  --animate-marquee: marquee 24s linear infinite;
+  --animate-pane-in: pane-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-pane-in-stagger: pane-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes pane-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+}
+
+/* inline: resolve against the next/font variables set on <html> */
+@theme inline {
+  --font-display: var(--font-bebas), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-body);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-yellow);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+  }
+  code,
+  pre {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+/* site container replaces Tailwind's breakpoint-stepped one */
+@utility container {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@utility border-brutal {
+  border: 3px solid var(--color-ink);
+}
+@utility border-brutal-thick {
+  border: 4px solid var(--color-ink);
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+  }
+
+  .section {
+    padding-block: 88px;
+  }
+  @media (max-width: 560px) {
+    .section {
+      padding-block: 60px;
+    }
+  }
+
+  /* section headers are centered site-wide (alignment fix) */
+  .section-label {
+    @apply block w-fit mx-auto bg-ink text-white font-display text-base tracking-[0.12em] px-3.5 py-1 mb-4 -rotate-[1.5deg];
+  }
+  .section-title {
+    @apply text-center text-[clamp(2.2rem,5vw,3.6rem)] mb-3.5;
+  }
+  .section-sub {
+    @apply max-w-[640px] mx-auto text-center text-[1.05rem] text-ink-soft;
+  }
+
+  .dark-band {
+    @apply bg-ink text-white;
+  }
+  .dark-band .section-label {
+    @apply bg-primary;
+  }
+  .dark-band .section-sub {
+    @apply text-[#bbb];
+  }
+  .dark-band .b-card {
+    color: var(--color-ink);
+  }
+
+  .hl {
+    @apply inline-block bg-yellow border-2 border-ink px-2.5 shadow-brutal-sm -rotate-1;
+  }
+  .hl-primary {
+    @apply bg-primary text-white;
+  }
+
+  .b-btn {
+    @apply inline-block font-display text-[1.15rem] tracking-[0.06em] uppercase no-underline text-ink bg-white border-brutal shadow-brutal-sm px-7 py-3 cursor-pointer
+      transition-[translate,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]
+      hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-ink)]
+      active:translate-x-1 active:translate-y-1 active:shadow-none
+      disabled:opacity-45 disabled:cursor-not-allowed disabled:translate-none disabled:shadow-brutal-sm;
+  }
+  .b-btn-primary {
+    @apply bg-primary text-white hover:bg-primary-hover;
+  }
+  .b-btn-yellow {
+    @apply bg-yellow;
+  }
+
+  .b-card {
+    @apply relative bg-white border-brutal shadow-brutal;
+  }
+  .b-card-hover {
+    @apply transition-[translate,box-shadow] duration-150 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[11px_11px_0_var(--color-ink)];
+  }
+
+  .stamp {
+    @apply absolute -top-3.5 right-[18px] bg-yellow border-2 border-ink font-display text-[0.85rem] tracking-[0.1em] px-2.5 py-[2px] rotate-3 shadow-brutal-xs;
+  }
+
+  .dots {
+    @apply absolute w-[46px] h-[46px] z-0 pointer-events-none;
+    background-image: radial-gradient(var(--color-pattern) 2px, transparent 2px);
+    background-size: 9px 9px;
+  }
+
+  .logo {
+    @apply font-display text-[1.7rem] no-underline flex items-center gap-2.5;
+  }
+  .logo-mark {
+    @apply bg-primary text-white border-2 border-ink shadow-brutal-xs px-2 -rotate-3;
+  }
+
+  .mock-bar {
+    @apply bg-yellow border-b-[3px] border-ink px-4 py-2.5 font-display text-base tracking-[0.08em];
+  }
+  .mock-body {
+    @apply grid gap-2.5 px-[26px] py-[22px];
+  }
+  .mock-row {
+    @apply flex gap-3 items-baseline text-[0.92rem] text-ink-soft;
+  }
+  .mock-letter {
+    @apply font-display text-[1.25rem] bg-ink text-white min-w-[30px] text-center border-2 border-ink shrink-0;
+  }
+
+  .chip {
+    @apply font-semibold text-[0.88rem] text-ink no-underline bg-white border-2 border-ink shadow-brutal-xs px-4 py-2 cursor-pointer
+      transition-[translate,box-shadow] duration-100
+      hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_var(--color-ink)] hover:bg-yellow;
+  }
+
+  .side-link {
+    @apply block w-full text-left no-underline font-body font-semibold text-[0.92rem] border-2 border-transparent px-3 py-2 mb-1.5 cursor-pointer bg-transparent
+      hover:border-ink hover:bg-paper
+      data-[active=true]:bg-yellow data-[active=true]:border-ink data-[active=true]:shadow-brutal-xs;
+  }
+
+  .copy-btn {
+    @apply font-display text-[0.9rem] tracking-[0.08em] bg-yellow text-ink border-2 border-white px-3.5 py-[3px] cursor-pointer hover:bg-primary hover:text-white;
+  }
+
+  .not-x {
+    @apply font-display text-2xl text-white bg-red-brand border-2 border-ink min-w-[34px] text-center shrink-0;
+  }
+
+  /* brutalist horizontal scrollbar (snap rows) */
+  .brutal-scroll::-webkit-scrollbar {
+    height: 12px;
+  }
+  .brutal-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border: 2px solid var(--color-ink);
+  }
+  .brutal-scroll::-webkit-scrollbar-track {
+    background: #fff;
+    border: 2px solid var(--color-ink);
+  }
+}
