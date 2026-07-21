@@ -8,19 +8,22 @@
     "start": "next start"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.3.2",
+    "@tailwindcss/postcss": "^4.3.3",
     "canvas-confetti": "^1.9.4",
     "motion": "^12.42.2",
     "next": "16.2.10",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "tailwindcss": "^4.3.2"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.9.0",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "typescript": "^5"
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.19"
   }
 }
