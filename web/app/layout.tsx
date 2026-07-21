@@ -3,6 +3,7 @@ import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import DigiBullBadge from "@/components/DigiBullBadge";
 import { SITE_URL, GITHUB } from "./config";
 
 // variable names must differ from the @theme font tokens they feed (globals.css)
@@ -91,6 +92,7 @@ export default function RootLayout({
         <Nav />
         {children}
         <Footer />
+        <DigiBullBadge />
       </body>
     </html>
   );

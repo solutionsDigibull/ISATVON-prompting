@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GITHUB } from "@/app/config";
+import { GITHUB, DIGIBULL_URL } from "@/app/config";
 
 const COLUMNS: [string, [string, string, boolean?][]][] = [
   [
@@ -27,7 +27,7 @@ const COLUMNS: [string, [string, string, boolean?][]][] = [
       ["https://github.com/isatvon/isatvon", "ISATVON Specification", true],
       ["https://github.com/isatvon/isatvon-validator", "Validator", true],
       [`${GITHUB}/blob/main/CONTRIBUTING.md`, "Contributing", true],
-      ["https://digibull.ai", "DigiBull AI", true],
+      [DIGIBULL_URL, "DigiBull AI", true],
     ],
   ],
   [

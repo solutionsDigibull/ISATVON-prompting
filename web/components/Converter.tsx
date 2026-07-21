@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { fireConfetti } from "./Confetti";
 
 const fieldCls =
   "font-body text-[0.95rem] leading-normal border-brutal shadow-brutal-sm bg-white px-4 py-3.5 w-full resize-y";
@@ -30,6 +31,7 @@ export default function Converter() {
       }
       setResult(data.choices[0].message.content.trim());
       setEditing(false);
+      fireConfetti();
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     }

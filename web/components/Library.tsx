@@ -509,6 +509,7 @@ const REFS = [
 export default function Library() {
   const [panel, setPanel] = useState("template");
   const [tab, setTab] = useState<"full" | "lite">("full");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   function show(id: string) {
     setPanel(id);
@@ -516,8 +517,26 @@ export default function Library() {
   }
 
   return (
-    <div className="grid min-[900px]:grid-cols-[280px_1fr] min-h-[calc(100vh-68px)]">
-      <aside className="bg-white border-b-[3px] min-[900px]:border-b-0 min-[900px]:border-r-[3px] border-ink px-5 py-7 min-[900px]:sticky min-[900px]:top-[68px] min-[900px]:h-[calc(100vh-68px)] min-[900px]:overflow-y-auto max-[900px]:grid max-[900px]:grid-cols-2 max-[900px]:gap-x-3.5 max-[900px]:gap-y-1 max-[900px]:items-start">
+    <div
+      className={
+        "grid min-h-[calc(100vh-68px)] transition-[grid-template-columns] duration-200 " +
+        (sidebarOpen ? "min-[900px]:grid-cols-[280px_1fr]" : "min-[900px]:grid-cols-[0px_1fr]")
+      }
+    >
+      <button
+        className="copy-btn hidden min-[900px]:block fixed top-[78px] z-20 transition-[left] duration-200"
+        style={{ left: sidebarOpen ? "290px" : "10px" }}
+        onClick={() => setSidebarOpen((v) => !v)}
+        aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+      >
+        {sidebarOpen ? "◀" : "▶"}
+      </button>
+      <aside
+        className={
+          "bg-white border-b-[3px] min-[900px]:border-b-0 min-[900px]:border-r-[3px] border-ink py-7 min-[900px]:sticky min-[900px]:top-[68px] min-[900px]:h-[calc(100vh-68px)] min-[900px]:overflow-y-auto max-[900px]:grid max-[900px]:grid-cols-2 max-[900px]:gap-x-3.5 max-[900px]:gap-y-1 max-[900px]:items-start px-5 min-[900px]:min-w-0 min-[900px]:overflow-x-hidden min-[900px]:whitespace-nowrap min-[900px]:transition-[padding] min-[900px]:duration-200 " +
+          (sidebarOpen ? "" : "min-[900px]:px-0 min-[900px]:border-r-0")
+        }
+      >
         <h4 className="font-display text-[0.95rem] tracking-[0.14em] text-[#777] mt-0 mb-2.5 max-[900px]:col-span-full">
           Templates
         </h4>
