@@ -1,4 +1,4 @@
-export const SITE_URL = "";
+export const SITE_URL = "https://isatvon.ai";
 
 export const GITHUB = "https://github.com/solutionsDigibull/ISATVON-prompting";
 
