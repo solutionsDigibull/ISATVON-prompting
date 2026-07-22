@@ -60,6 +60,18 @@ export default function Nav() {
             className="max-[900px]:motion-safe:animate-pane-in-stagger"
             style={{ animationDelay: "0.24s" }}
           >
+            <a
+              className="chip bg-yellow whitespace-nowrap"
+              href="/isatvon-skill.md"
+              download="isatvon-skill.md"
+            >
+              Download Skill
+            </a>
+          </li>
+          <li
+            className="max-[900px]:motion-safe:animate-pane-in-stagger"
+            style={{ animationDelay: "0.28s" }}
+          >
             <Link
               className="b-btn b-btn-primary text-[0.95rem] px-[18px] py-[7px]"
               href="/prompting"

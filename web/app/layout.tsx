@@ -79,8 +79,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bebas.variable} ${inter.variable}`}>
-      <body>
+    <html lang="en" className={`${bebas.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
