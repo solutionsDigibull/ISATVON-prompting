@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
+import { pageMeta, GITHUB, DIGIBULL_URL } from "../config";
 
 const title = "Terms of Use";
 const description = "Terms of use for the ISATVON website by DigiBull AI.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/terms" },
-  openGraph: { title, description, type: "website" },
-  twitter: { card: "summary_large_image", title, description },
-};
+export const metadata: Metadata = pageMeta(title, description, "/terms");
 
 export default function TermsPage() {
   return (
@@ -19,7 +14,7 @@ export default function TermsPage() {
         <p className="section-sub !text-left !mx-0 mb-5">
           The ISATVON framework and this website&rsquo;s content are provided
           by DigiBull AI under the{" "}
-          <a className="underline" href="https://github.com/isatvon/isatvon-prompting/blob/main/LICENSE">Apache 2.0 Licence</a>,
+          <a className="underline" href={`${GITHUB}/blob/main/LICENSE`}>Apache 2.0 Licence</a>,
           free to use, adapt and share.
         </p>
         <p className="section-sub !text-left !mx-0 mb-5">
@@ -31,8 +26,8 @@ export default function TermsPage() {
         </p>
         <p className="section-sub !text-left !mx-0">
           Questions can be raised via{" "}
-          <a className="underline" href="https://github.com/isatvon/isatvon-prompting/issues">GitHub issues</a> or{" "}
-          <a className="underline" href="https://digibull.ai">digibull.ai</a>.
+          <a className="underline" href={`${GITHUB}/issues`}>GitHub issues</a> or{" "}
+          <a className="underline" href={DIGIBULL_URL}>digibull.ai</a>.
         </p>
       </div>
     </section>

@@ -24,8 +24,8 @@ const COLUMNS: [string, [string, string, boolean?][]][] = [
   [
     "Ecosystem",
     [
-      ["https://github.com/isatvon/isatvon", "ISATVON Specification", true],
-      ["https://github.com/isatvon/isatvon-validator", "Validator", true],
+      [`${GITHUB}/blob/main/SKILL.md`, "Skill Definition", true],
+      [`${GITHUB}/blob/main/references/response-format.md`, "Response Format", true],
       [`${GITHUB}/blob/main/CONTRIBUTING.md`, "Contributing", true],
       [DIGIBULL_URL, "DigiBull AI", true],
     ],
@@ -83,7 +83,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener"
           >
-            github.com/isatvon/isatvon-prompting
+            {GITHUB.replace("https://", "")}
           </a>
         </div>
       </div>

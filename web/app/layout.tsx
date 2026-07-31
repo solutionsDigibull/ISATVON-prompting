@@ -4,7 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import DigiBullBadge from "@/components/DigiBullBadge";
-import { SITE_URL, GITHUB } from "./config";
+import { SITE_URL, GITHUB, DIGIBULL_URL } from "./config";
 
 // variable names must differ from the @theme font tokens they feed (globals.css)
 const bebas = Bebas_Neue({
@@ -50,6 +50,7 @@ export const metadata: Metadata = {
     description,
     siteName: "ISATVON",
     type: "website",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
@@ -61,16 +62,23 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
   name: "ISATVON",
   url: SITE_URL,
-  sameAs: [GITHUB],
+  logo: `${SITE_URL}/DBAI-Logo.webp`,
+  description,
+  sameAs: [GITHUB, DIGIBULL_URL],
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
   name: "ISATVON",
   url: SITE_URL,
+  description,
+  inLanguage: "en",
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export default function RootLayout({

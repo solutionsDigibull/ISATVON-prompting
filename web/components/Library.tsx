@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Converter from "./Converter";
+import { GITHUB } from "@/app/config";
 
 const panelCls = "hidden data-[active=true]:block data-[active=true]:motion-safe:animate-pane-in";
 const tabPaneCls = "hidden data-[active=true]:block data-[active=true]:motion-safe:animate-pane-in";
@@ -567,7 +568,7 @@ export default function Library() {
           <a
             key={path}
             className="side-link"
-            href={`https://github.com/isatvon/isatvon-prompting/blob/main/${path}`}
+            href={`${GITHUB}/blob/main/${path}`}
             target="_blank"
             rel="noopener"
           >

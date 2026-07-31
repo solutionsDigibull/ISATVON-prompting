@@ -2,19 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Pipeline, SevenGrid } from "@/components/Framework";
 import Reveal from "@/components/Reveal";
-import { GITHUB } from "../config";
+import { GITHUB, pageMeta } from "../config";
 
 const title = "How the ISATVON Framework Works";
 const description =
   "How ISATVON structures the prompt and the AI response across seven sections: instructions, sources, execution, tools, variables, outcomes and notification.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/how-it-works" },
-  openGraph: { title, description, type: "website" },
-  twitter: { card: "summary_large_image", title, description },
-};
+export const metadata: Metadata = pageMeta(title, description, "/how-it-works");
 
 const RESPONSE_ROWS = [
   ["I", "The model solved the wrong problem: visible in one sentence, before you read the rest."],

@@ -645,7 +645,7 @@ export default function Home() {
               </div>
               <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
                 <span className="not-x">✕</span>
-                <div><strong className="block">Strict Machine-Execution Contracts</strong> Deterministic agent loops, schemas, retries and guaranteed tool execution require a machine-readable <a className="underline" href="https://github.com/isatvon/isatvon" target="_blank" rel="noopener">specification</a> and <a className="underline" href="https://github.com/isatvon/isatvon-validator" target="_blank" rel="noopener">validator</a>.</div>
+                <div><strong className="block">Strict Machine-Execution Contracts</strong> Deterministic agent loops, schemas, retries and guaranteed tool execution require a machine-readable specification and validator, not a prompting convention.</div>
               </div>
               <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
                 <span className="not-x">✕</span>

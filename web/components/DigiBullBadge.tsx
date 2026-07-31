@@ -7,6 +7,9 @@ export default function DigiBullBadge() {
       href={DIGIBULL_URL}
       target="_blank"
       rel="noopener"
+      // the label span is display:none below 560px, leaving the link with no
+      // accessible name — the image is decorative and aria-hidden
+      aria-label="Powered by DigiBull.ai"
       className="fixed bottom-3 right-3 z-50 flex items-center gap-2 bg-white border-2 border-ink shadow-brutal-xs px-1.5 py-1.5 rotate-2 no-underline
         transition-transform hover:rotate-0 hover:scale-105 hover:shadow-brutal-sm
         min-[560px]:bottom-4 min-[560px]:right-4 min-[560px]:px-3 min-[560px]:py-2 min-[560px]:shadow-brutal-sm"

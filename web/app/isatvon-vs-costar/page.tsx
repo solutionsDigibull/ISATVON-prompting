@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import { pageMeta, GITHUB } from "../config";
 
-const title = "ISATVON vs COSTAR";
+const title = "ISATVON vs COSTAR: Which Prompting Framework?";
 const description =
   "Compare ISATVON and COSTAR: full section mapping, what ISATVON adds (verification, tool policy, response contract, assumption reporting) and when to use which.";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/isatvon-vs-costar" },
-  openGraph: { title, description, type: "website" },
-  twitter: { card: "summary_large_image", title, description },
-};
+export const metadata: Metadata = pageMeta(title, description, "/isatvon-vs-costar");
 
 const MAPPING_ROWS: [string, string, string][] = [
   ["Context", "S| Source", "The explicit “do not assume” boundary"],
@@ -85,18 +80,230 @@ export default function VsCostarPage() {
       <section className="section bg-white border-y-[3px] border-ink">
         <div className="container">
           <h2 className="section-title">
+            What COSTAR <span className="hl">Gets Right</span>
+          </h2>
+          <p className="section-sub">
+            COSTAR is a good framework and most of ISATVON overlaps with it. It
+            came out of a competition-winning prompt engineering practice, and
+            its six sections cover the things people most often leave out of a
+            prompt: who the model is talking to, in what register, and what the
+            reply should look like. If your prompts currently consist of one
+            sentence and a hope, adopting COSTAR is a large improvement for very
+            little effort.
+          </p>
+          <p className="section-sub">
+            The mapping table above shows this directly. Five of COSTAR&rsquo;s
+            six sections map cleanly onto ISATVON sections. ISATVON is not a
+            replacement for the idea behind COSTAR; it is the same idea extended
+            to cover what happens after the model starts writing.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <h2 className="section-title">
+            The Three Sections COSTAR <span className="hl hl-primary">Has No Slot For</span>
+          </h2>
+          <p className="section-sub">
+            Every framework encodes a theory of where prompts fail. COSTAR&rsquo;s
+            theory is that they fail because the ask is underspecified. ISATVON
+            accepts that and adds a second theory: they also fail because the
+            answer is unaccountable. Three sections exist only to address that.
+          </p>
+          <Reveal>
+            <div className="mt-12 grid gap-9 items-start min-[900px]:grid-cols-3">
+              <div className="b-card">
+                <div className="font-display text-[1.1rem] tracking-[0.1em] border-b-[3px] border-ink px-[18px] py-2.5 bg-yellow">
+                  A — Automation
+                </div>
+                <div className="p-5 text-[0.9rem]">
+                  <p className="mb-3">
+                    Fixes the step order, then ends with a self-check the model
+                    has to run before it is allowed to answer: every figure
+                    sourced, every constraint met, every claim checked.
+                  </p>
+                  <p>
+                    A prompt without this asks for an answer. A prompt with it
+                    asks for a checked answer. That is a different request, and
+                    models respond to it differently.
+                  </p>
+                </div>
+              </div>
+              <div className="b-card">
+                <div className="font-display text-[1.1rem] tracking-[0.1em] border-b-[3px] border-ink px-[18px] py-2.5 bg-yellow">
+                  T — Tech Stack
+                </div>
+                <div className="p-5 text-[0.9rem]">
+                  <p className="mb-3">
+                    States which capabilities are allowed and which are
+                    forbidden: web search, code execution, citations, image
+                    generation.
+                  </p>
+                  <p>
+                    Without it the model decides for itself whether to look
+                    something up or answer from memory, and it does not tell you
+                    which it chose. Two runs of the same prompt can differ for
+                    that reason alone.
+                  </p>
+                </div>
+              </div>
+              <div className="b-card">
+                <span className="stamp">N</span>
+                <div className="font-display text-[1.1rem] tracking-[0.1em] border-b-[3px] border-ink px-[18px] py-2.5 bg-yellow">
+                  N — Notification
+                </div>
+                <div className="p-5 text-[0.9rem]">
+                  <p className="mb-3">
+                    Requires a closing report: assumptions made, confidence
+                    level, and anything requested that was not delivered.
+                  </p>
+                  <p>
+                    This is the section that changes review time most. Silent
+                    omissions are the expensive failure mode, because you only
+                    find them after you have acted on the output.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section bg-white border-y-[3px] border-ink">
+        <div className="container">
+          <h2 className="section-title">
+            The Same Task, <span className="hl">Both Ways</span>
+          </h2>
+          <p className="section-sub">
+            Take a concrete request: summarise a 30-page vendor contract for a
+            non-lawyer.
+          </p>
+          <Reveal>
+            <div className="mt-12 grid gap-9 items-start min-[900px]:grid-cols-2">
+              <div className="b-card">
+                <div className="font-display text-[1.1rem] tracking-[0.1em] border-b-[3px] border-ink px-[18px] py-2.5 bg-green-brand">
+                  Under COSTAR
+                </div>
+                <div className="p-5 text-[0.9rem]">
+                  <p className="mb-3">
+                    You get context (the contract), an objective (summarise the
+                    obligations), a style (plain English), a tone (neutral), an
+                    audience (a non-lawyer) and a response shape (bullets).
+                  </p>
+                  <p>
+                    You will very likely get a good summary. What you will not
+                    get is any indication of which clauses the model skipped
+                    because they were ambiguous, whether it read all 30 pages or
+                    the first ten, or whether &ldquo;90-day termination
+                    window&rdquo; came from the document or from what contracts
+                    usually say.
+                  </p>
+                </div>
+              </div>
+              <div className="b-card">
+                <span className="stamp">ISATVON</span>
+                <div className="font-display text-[1.1rem] tracking-[0.1em] border-b-[3px] border-ink px-[18px] py-2.5 bg-green-brand">
+                  Under ISATVON
+                </div>
+                <div className="p-5 text-[0.9rem]">
+                  <p className="mb-3">
+                    You get all of the above, plus: S pins the summary to the
+                    supplied document and forbids filling gaps from general
+                    contract knowledge. A requires the model to confirm it
+                    covered every section before answering. T forbids web
+                    search. N forces it to list the clauses it found ambiguous
+                    and state its confidence.
+                  </p>
+                  <p>
+                    The summary itself may be similar. The difference is that
+                    you now know what it is based on, and where not to trust it.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+          <p className="section-sub mt-9">
+            This is the general pattern. ISATVON rarely produces a dramatically
+            better deliverable. It produces a deliverable you can review in
+            minutes instead of re-reading the source to check it.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <h2 className="section-title">
+            What ISATVON <span className="hl hl-primary">Costs You</span>
+          </h2>
+          <p className="section-sub">
+            Seven sections and a mandated response format are not free, and the
+            honest comparison includes the downsides.
+          </p>
+          <Reveal>
+            <div className="mt-12 grid gap-9 items-start min-[900px]:grid-cols-3">
+              <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
+                <span className="not-x">✕</span>
+                <div>
+                  <strong className="block">Length</strong>
+                  An ISATVON prompt is longer to write and longer to read than a
+                  COSTAR one. For a tweet rewrite, the prompt would exceed the
+                  deliverable.
+                </div>
+              </div>
+              <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
+                <span className="not-x">✕</span>
+                <div>
+                  <strong className="block">Verbose replies</strong>
+                  The O and N sections mean the answer arrives wrapped in meta.
+                  That is the point, but it is friction when you just wanted the
+                  paragraph.
+                </div>
+              </div>
+              <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
+                <span className="not-x">✕</span>
+                <div>
+                  <strong className="block">Not enforcement</strong>
+                  A self-check is still the model checking itself. It catches
+                  more than no check at all; it is not a validator, and it does
+                  not make the output correct.
+                </div>
+              </div>
+            </div>
+          </Reveal>
+          <p className="section-sub mt-9">
+            The{" "}
+            <a
+              className="underline"
+              href={`${GITHUB}/blob/main/templates/prompt-template-lite.md`}
+              target="_blank"
+              rel="noopener"
+            >
+              Lite template
+            </a>{" "}
+            exists for the middle ground: the ISATVON sections that matter most,
+            without the full ceremony.
+          </p>
+        </div>
+      </section>
+
+      <section className="section bg-white border-y-[3px] border-ink">
+        <div className="container">
+          <h2 className="section-title">
             What the A Section Catches That <span className="hl hl-primary">COSTAR Can&rsquo;t</span>
           </h2>
           <p className="section-sub">
             COSTAR has no verification slot, so nothing stops the model from
-            shipping unchecked claims. In blind benchmarking this showed up
-            concretely: a COSTAR-framed launch email invented a &ldquo;40%
-            fewer interruptions&rdquo; statistic. The ISATVON version of the
-            same task self-verified its word count and constraint list before
-            answering and invented nothing, because A ends with an explicit
-            self-check and I carries a &ldquo;never invent figures&rdquo;
-            rule. That verification step, not the section count, is the
-            framework&rsquo;s real edge.
+            shipping unchecked claims. In our own side-by-side testing this
+            showed up concretely: a COSTAR-framed launch email invented a
+            &ldquo;40% fewer interruptions&rdquo; statistic out of nothing. The
+            ISATVON version of the same task self-verified its word count and
+            constraint list before answering and invented no figures, because A
+            ends with an explicit self-check and I carries a &ldquo;never invent
+            figures&rdquo; rule. This is an internal comparison, not a published
+            benchmark, and one task is not evidence of a rate. The point is the
+            mechanism: that verification step, not the section count, is where
+            the difference comes from.
           </p>
         </div>
       </section>
