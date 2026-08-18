@@ -1,3 +1,18 @@
+---
+id: copilot
+order: 6
+platform: Copilot
+difficulty: intermediate
+category: engineering
+tags: [refactor, behavior-preservation, tests]
+raw-quality: mediocre
+contributed-by: solutionsDigibull
+date: 2026-07-08
+nav: "Copilot: Refactor"
+chip: "Refactor a function…"
+tagline: "\"Too long\" becomes a testable contract: identical signature, all paths preserved."
+---
+
 # GitHub Copilot — Refactor
 
 ## Raw prompt

@@ -1,3 +1,18 @@
+---
+id: claude
+order: 3
+platform: Claude
+difficulty: intermediate
+category: engineering
+tags: [code-review, severity, verification]
+raw-quality: naive
+contributed-by: solutionsDigibull
+date: 2026-07-08
+nav: "Claude: Code review"
+chip: "Review this code…"
+tagline: "\"Is it good?\" invites vague praise. This restricts the review to defects with line citations."
+---
+
 # Claude — Code review
 
 ## Raw prompt

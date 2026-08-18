@@ -28,9 +28,8 @@ export default function HowItWorksPage() {
             How the ISATVON <span className="hl">Framework</span> Works
           </h1>
           <p className="max-w-[620px] mx-auto text-[1.12rem] text-ink-soft">
-            ISATVON transforms a raw request into a structured prompt, and
-            contracts the response so what the AI understood, used, verified
-            and assumed is visible in every reply.
+            ISATVON transforms a raw request into a structured prompt, and contracts the response so
+            what the AI understood, used, verified and assumed is visible in every reply.
           </p>
         </div>
       </header>
@@ -54,10 +53,9 @@ export default function HowItWorksPage() {
             The Seven <span className="hl">Sections</span>
           </h2>
           <p className="section-sub">
-            ISATVON stands for Instructions, Source, Automation, Tech Stack,
-            Variables, Outcome and Notification. Each section works in two
-            directions: it tells the AI how to perform the task, and it tells
-            the AI what it must report in the response.
+            ISATVON stands for Instructions, Source, Automation, Tech Stack, Variables, Outcome and
+            Notification. Each section works in two directions: it tells the AI how to perform the
+            task, and it tells the AI what it must report in the response.
           </p>
           <Reveal>
             <SevenGrid />
@@ -71,8 +69,8 @@ export default function HowItWorksPage() {
             Reading an ISATVON <span className="hl">Response</span>
           </h2>
           <p className="section-sub">
-            Every ISATVON prompt&rsquo;s O section asks for the reply in the
-            same structure, so the response is auditable at a glance.
+            Every ISATVON prompt&rsquo;s O section asks for the reply in the same structure, so the
+            response is auditable at a glance.
           </p>
           <Reveal>
             <div className="b-card max-w-[720px] mx-auto my-10 text-left">
@@ -88,9 +86,8 @@ export default function HowItWorksPage() {
             </div>
           </Reveal>
           <p className="section-sub">
-            Check I first: a wrong restatement means a wrong answer; stop and
-            re-prompt. Scan V and N for broken constraints and assumptions you
-            disagree with. Only then read O.
+            Check I first: a wrong restatement means a wrong answer; stop and re-prompt. Scan V and
+            N for broken constraints and assumptions you disagree with. Only then read O.
           </p>
         </div>
       </section>
@@ -101,7 +98,9 @@ export default function HowItWorksPage() {
             Try it on your next prompt
           </p>
           <div className="flex gap-[18px] justify-center flex-wrap">
-            <Link className="b-btn hover:bg-yellow" href="/prompting">Convert Your Prompt</Link>
+            <Link className="b-btn hover:bg-yellow" href="/prompting">
+              Convert Your Prompt
+            </Link>
             <a
               className="b-btn hover:bg-yellow"
               href={`${GITHUB}/blob/main/templates/prompt-template.md`}

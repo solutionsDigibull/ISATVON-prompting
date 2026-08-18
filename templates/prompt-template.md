@@ -20,6 +20,7 @@ Do not assume: [WHAT THE MODEL MUST NOT FILL IN FROM ITS OWN KNOWLEDGE].
 ## A — Automation
 
 Work in these steps:
+
 1. [STEP 1]
 2. [STEP 2]
 3. [STEP N]

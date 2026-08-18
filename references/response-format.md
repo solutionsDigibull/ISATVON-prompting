@@ -6,7 +6,7 @@ whether it checked itself.
 
 ## Canonical skeleton (copy into the O section of your prompt)
 
-```
+```text
 Structure your entire response in ISATVON format:
 
 - **I** — the task as you understood it (1 sentence)
@@ -26,7 +26,7 @@ For Lite prompts (self-contained questions, no constraints or sources), the O se
 embed this 3-line skeleton instead — it keeps the wrong-problem check (I) and the
 assumptions report (N) while dropping the sections that would be empty:
 
-```
+```text
 Structure your response as:
 
 - **I** — the task as you understood it (1 sentence)

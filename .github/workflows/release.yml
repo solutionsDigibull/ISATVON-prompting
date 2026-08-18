@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Verify the tag matches SKILL.md
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          skill=$(grep -oP '^\s+version:\s*\K[0-9]+\.[0-9]+\.[0-9]+' SKILL.md || true)
+          if [ "$tag" != "$skill" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match SKILL.md metadata.version ($skill)."
+            echo "Bump SKILL.md (and re-copy it to web/public/isatvon-skill.md) before tagging."
+            exit 1
+          fi
+
+      - name: Validate content
+        run: |
+          npm ci
+          npm run content:check
+          npm run test:run
+        working-directory: web
+
+      - name: Build the skill bundle
+        # INSTALL.md tells Claude Desktop users to zip these four items themselves;
+        # shipping the zip turns that into a download.
+        run: zip -r isatvon-prompting-skill.zip SKILL.md templates references examples skill-registry.json
+
+      - name: Extract the changelog entry
+        id: notes
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v v="$version" '
+            $0 ~ "^## " v " " || $0 ~ "^## " v "$" { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > RELEASE_NOTES.md
+          if [ ! -s RELEASE_NOTES.md ]; then
+            echo "No CHANGELOG.md section for $version." > RELEASE_NOTES.md
+          fi
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          body_path: RELEASE_NOTES.md
+          files: isatvon-prompting-skill.zip

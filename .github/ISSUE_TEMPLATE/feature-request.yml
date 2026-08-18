@@ -1,0 +1,41 @@
+name: Feature request
+description: Propose a change to the framework, the tooling, or the site
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of change
+      options:
+        - Framework (what a section means, or the response contract)
+        - Guidance (references, docs, tutorials)
+        - Website or API
+        - Tooling (tests, CI, generation)
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What fails today
+      description: A concrete prompt and a concrete bad answer beats a preference.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: The change
+      description: The smallest version that fixes it.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: |
+        Framework changes need it — same task, same model, before and after, more than once.
+        See [GOVERNANCE.md](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/GOVERNANCE.md). Leave blank for non-framework changes.
+  - type: textarea
+    id: cost
+    attributes:
+      label: What it costs
+      description: Every section is tokens someone pays for on every call.

@@ -1,3 +1,18 @@
+---
+id: gemini
+order: 4
+platform: Gemini
+difficulty: advanced
+category: research
+tags: [research, citations, recency]
+raw-quality: naive
+contributed-by: solutionsDigibull
+date: 2026-07-08
+nav: "Gemini: Research brief"
+chip: "Research a topic…"
+tagline: "Handles both grounded-search and knowledge-cutoff modes explicitly."
+---
+
 # Gemini — Research brief
 
 ## Raw prompt
