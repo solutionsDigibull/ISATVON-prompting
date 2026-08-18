@@ -49,7 +49,7 @@ jobs:
         working-directory: web
       - run: npm run test:run -- --coverage
         working-directory: web
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@v7
         if: ${{ !cancelled() }}
         with:
           files: web/coverage/lcov.info
