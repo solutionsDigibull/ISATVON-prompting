@@ -3,6 +3,9 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/solutionsDigibull/ISATVON-prompting/actions/workflows/ci.yml"><img src="https://github.com/solutionsDigibull/ISATVON-prompting/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://codecov.io/gh/solutionsDigibull/ISATVON-prompting"><img src="https://codecov.io/gh/solutionsDigibull/ISATVON-prompting/branch/main/graph/badge.svg" alt="Coverage"></a>
+  <a href="examples/README.md"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FsolutionsDigibull%2FISATVON-prompting%2Fmain%2Fexamples%2Findex.json&query=%24.count&label=examples&color=88C0D0" alt="Examples"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="License"></a>
   <img src="https://img.shields.io/badge/framework-ISATVON%20v1.4-88C0D0" alt="Framework">
   <img src="https://img.shields.io/badge/dependencies-none-A3BE8C" alt="No dependencies">
@@ -16,7 +19,7 @@ a prompt with seven sections; the model is required to return its response in th
 seven-part structure, so you can see what it assumed, what it used, and whether it
 checked itself.
 
-```
+```text
 Raw prompt ──► I S A T V O N prompt ──► any AI platform ──► I S A T V O N response
               (role/rules, sources,                        (task-as-understood, sources
                method+self-check,                           used, verification, constraints
@@ -26,6 +29,19 @@ Raw prompt ──► I S A T V O N prompt ──► any AI platform ──► I 
 
 Works on ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and anything else that
 reads markdown — it's just text.
+
+**[Try it in your browser →](https://www.isatvon.ai/prompting)** — paste a raw prompt, get
+the seven-section version back, edit it, copy it.
+
+## Contents
+
+- [Quick example](#quick-example) · [ISATVON vs COSTAR](#isatvon-vs-costar) · [Installation](#installation)
+- [The seven sections](#the-seven-sections) · [When not to use it](#when-not-to-use-isatvon-prompting)
+- **Learn:** [Your first prompt](docs/tutorials/first-prompt.md) · [Per-platform tuning](docs/tutorials/platform-guide.md) · [FAQ](docs/faq.md)
+- **Reference:** [Per-element guide](references/prompting-guide.md) · [COSTAR mapping](references/costar-comparison.md) · [Response contract](references/response-format.md) · [Glossary](references/domain-model.md) · [Which route to take](references/flow-guide.md)
+- **Examples:** [all 7, by difficulty](examples/README.md) · [index.json](examples/index.json)
+- **Build on it:** [API reference](docs/api-reference.md) · [Architecture](docs/architecture.md)
+- **Contribute:** [CONTRIBUTING](CONTRIBUTING.md) · [Writing an example](docs/examples-guide.md) · [Governance](GOVERNANCE.md) · [Security](SECURITY.md)
 
 ## Quick example
 
@@ -74,20 +90,31 @@ Per-element guidance with good/weak examples: [references/prompting-guide.md](re
 
 ## Repository layout
 
-```
+```text
 isatvon-prompting/
 ├── SKILL.md                          # Agent Skill: converts any raw prompt → ISATVON prompt
-├── templates/prompt-template.md      # copy-paste skeleton, works without any agent
+├── templates/
+│   ├── prompt-template.md            # copy-paste skeleton, works without any agent
+│   ├── prompt-template-lite.md       # I + O + N, for self-contained questions
+│   └── response-template.md          # the response contract on its own
 ├── references/
 │   ├── prompting-guide.md            # the 7 elements as prompt sections
 │   ├── costar-comparison.md          # COSTAR ↔ ISATVON mapping
-│   └── response-format.md            # the structured-response contract
-├── examples/                         # before/after conversions: generic, ChatGPT, Claude,
-│                                     #   Gemini, Perplexity, Copilot, Grok
+│   ├── response-format.md            # the structured-response contract
+│   ├── domain-model.md               # glossary: the terms this repo uses
+│   └── flow-guide.md                 # convert or skip? full or lite? which section to fix?
+├── examples/                         # 7 before/after conversions + generated index
+├── docs/                             # architecture, API reference, FAQ, tutorials
+├── web/                              # the website and converter (every dependency lives here)
 ├── EVALS.md                          # recorded trigger-eval transcripts
-├── INSTALL.md · CITATIONS.md · CHANGELOG.md · CONTRIBUTING.md · LICENSE
+├── skill-registry.json               # generated manifest for agent discovery
+├── INSTALL.md · CITATIONS.md · CHANGELOG.md · CONTRIBUTING.md · GOVERNANCE.md
+├── RELEASING.md · SECURITY.md · CODE_OF_CONDUCT.md · CONTRIBUTORS.md · LICENSE
 └── assets/banner.svg
 ```
+
+The repo root has **no `package.json`** — copying a template into a chat needs no toolchain.
+Tests, linters and the site all live in `web/`; see [docs/architecture.md](docs/architecture.md).
 
 ## When not to use ISATVON prompting
 
@@ -102,7 +129,8 @@ isatvon-prompting/
 ## Contributing
 
 Example conversions are the most valuable contribution — see
-[CONTRIBUTING.md](CONTRIBUTING.md).
+[CONTRIBUTING.md](CONTRIBUTING.md) and [docs/examples-guide.md](docs/examples-guide.md).
+Framework changes need evidence: [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Enterprise
 
@@ -111,4 +139,5 @@ governance, analytics, and hosted orchestration, see DigiBull Enterprise.
 
 ---
 
-Apache-2.0 · [Citations & inspiration](CITATIONS.md)
+Apache-2.0 · [Citations & inspiration](CITATIONS.md) · [Security](SECURITY.md) ·
+[Changelog](CHANGELOG.md)

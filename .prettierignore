@@ -1,0 +1,22 @@
+# Prettier is a web/ devDependency but the hook runs from the repo root, so the
+# ignore list has to exist here too.
+
+node_modules
+web/.next
+web/coverage
+web/playwright-report
+web/test-results
+web/.agents
+web/package-lock.json
+web/skills-lock.json
+
+# Generated — byte-for-byte output of web/scripts/build-content.ts. Reformatting
+# these makes `npm run content:check` fail forever.
+web/lib/generated
+examples/index.json
+examples/README.md
+skill-registry.json
+
+# markdownlint owns markdown; web/public/isatvon-skill.md must stay byte-identical
+# to SKILL.md
+*.md

@@ -1,0 +1,7 @@
+{
+  "web/**/*.{ts,tsx,mts}": [
+    "npm --prefix web run lint:fix --",
+    "npx --prefix web prettier --write"
+  ],
+  "**/*.md": "npx --prefix web markdownlint-cli2 --fix"
+}

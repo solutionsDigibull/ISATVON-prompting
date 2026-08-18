@@ -1,3 +1,18 @@
+---
+id: chatgpt
+order: 2
+platform: ChatGPT
+difficulty: intermediate
+category: marketing
+tags: [email, copywriting, constraints]
+raw-quality: mediocre
+contributed-by: solutionsDigibull
+date: 2026-07-08
+nav: "ChatGPT: Marketing email"
+chip: "Write a marketing email…"
+tagline: "Pin the product facts so the email can't acquire imaginary features."
+---
+
 # ChatGPT — Marketing email
 
 ## Raw prompt

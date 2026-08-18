@@ -2,13 +2,48 @@
 // Used on the homepage and the /how-it-works page.
 
 const SECTIONS = [
-  ["I", "Instructions", "Role, task and non-negotiable instructions.", "The task as the AI understood it."],
-  ["S", "Source", "Approved sources and information the AI must not invent.", "The sources actually used."],
-  ["A", "Automation", "Workflow steps, checks and self-verification requirements.", "How the result was produced and verified."],
-  ["T", "Tech Stack", "Allowed, required and prohibited tools.", "The tool policy followed during execution."],
-  ["V", "Variables", "Length, tone, audience, format, language, depth and fallback rules.", "Constraints followed, missed or modified, with reasons."],
-  ["O", "Outcome", "The required output structure and acceptance criteria.", "The completed deliverable."],
-  ["N", "Notification", "Assumption, confidence and omission reporting requirements.", "Assumptions, confidence levels, missing inputs and limitations."],
+  [
+    "I",
+    "Instructions",
+    "Role, task and non-negotiable instructions.",
+    "The task as the AI understood it.",
+  ],
+  [
+    "S",
+    "Source",
+    "Approved sources and information the AI must not invent.",
+    "The sources actually used.",
+  ],
+  [
+    "A",
+    "Automation",
+    "Workflow steps, checks and self-verification requirements.",
+    "How the result was produced and verified.",
+  ],
+  [
+    "T",
+    "Tech Stack",
+    "Allowed, required and prohibited tools.",
+    "The tool policy followed during execution.",
+  ],
+  [
+    "V",
+    "Variables",
+    "Length, tone, audience, format, language, depth and fallback rules.",
+    "Constraints followed, missed or modified, with reasons.",
+  ],
+  [
+    "O",
+    "Outcome",
+    "The required output structure and acceptance criteria.",
+    "The completed deliverable.",
+  ],
+  [
+    "N",
+    "Notification",
+    "Assumption, confidence and omission reporting requirements.",
+    "Assumptions, confidence levels, missing inputs and limitations.",
+  ],
 ];
 
 // matches the old nth-child(2n)/nth-child(3n) accent cycle
@@ -49,10 +84,22 @@ export function SevenGrid() {
 }
 
 const STEPS = [
-  ["Start With a Raw Prompt", "Write your task in normal language. It can be short, rough or incomplete."],
-  ["Structure It With ISATVON", "Organise the request into seven sections covering instructions, sources, execution methods, tools, variables, outcomes and reporting requirements."],
-  ["Use Your Preferred AI Tool", "Paste the structured prompt into ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok or another capable AI platform."],
-  ["Review a Transparent Response", "The AI response should explain what it understood, which sources it used, how it verified the work and what assumptions it made."],
+  [
+    "Start With a Raw Prompt",
+    "Write your task in normal language. It can be short, rough or incomplete.",
+  ],
+  [
+    "Structure It With ISATVON",
+    "Organise the request into seven sections covering instructions, sources, execution methods, tools, variables, outcomes and reporting requirements.",
+  ],
+  [
+    "Use Your Preferred AI Tool",
+    "Paste the structured prompt into ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok or another capable AI platform.",
+  ],
+  [
+    "Review a Transparent Response",
+    "The AI response should explain what it understood, which sources it used, how it verified the work and what assumptions it made.",
+  ],
 ];
 
 export function Pipeline() {

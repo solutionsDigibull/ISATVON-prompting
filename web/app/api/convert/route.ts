@@ -1,48 +1,45 @@
-// GROQ_API_KEY is a server-side env var (Vercel Project Settings > Environment
-// Variables, or web/.env.local for dev) — never shipped to the browser.
+import { MAX_RAW_LENGTH, GroqError, convertPrompt } from "@/lib/groq/client";
+import { clientKey, rateLimit } from "@/lib/rate-limit";
 
-const SYSTEM = `You convert raw prompts into the ISATVON prompting framework.
-Rewrite the user's raw prompt as a complete ISATVON prompt in markdown with these sections:
-## I — Instructions (role, one imperative task sentence, hard rules)
-## S — Source (context/inputs to use, an explicit "do not assume" boundary; keep the user's pasted material as a placeholder like [PASTE ...] if they reference material not included)
-## A — Automation (numbered work steps, then a "Before answering, verify:" self-check tied to S and V; on failure revise once, then report in N)
-## T — Tech stack (allowed and forbidden capabilities; always forbid fabricating facts/citations)
-## V — Variables (measurable limits: length, tone, audience, format; a fallback line: if a constraint cannot be met, say which and why, ask at most 1 clarifying question)
-## O — Outcome (require the entire response in ISATVON format: I task-as-understood, S sources used, A verification done, V constraints honored, O the deliverable with its exact shape, N assumptions and confidence)
-## N — Notification (require stating every assumption, confidence high/medium/low, anything undeliverable)
-Exception: if the raw prompt is a fully self-contained one-shot question with no constraints or sources, output only the Lite form: I, O, N.
-Invent sensible concrete defaults for details the raw prompt leaves out (word counts, tone, audience) rather than leaving sections vague.
-Output ONLY the converted prompt markdown. No commentary, no code fences.`;
+const LIMIT = 10;
+const WINDOW_MS = 60_000;
 
+const error = (message: string, status: number, headers?: HeadersInit) =>
+  Response.json({ error: { message } }, { status, headers });
+
+/**
+ * POST /api/convert — `{ "raw": "<prompt>" }` → `{ "prompt": "<ISATVON markdown>" }`.
+ *
+ * Documented in docs/api-reference.md and web/public/openapi.yaml.
+ */
 export async function POST(req: Request) {
+  const limit = rateLimit(clientKey(req), { limit: LIMIT, windowMs: WINDOW_MS });
+  if (!limit.ok) {
+    return error(
+      `Rate limit reached (${LIMIT} conversions per minute). Try again in ${limit.retryAfter}s.`,
+      429,
+      { "Retry-After": String(limit.retryAfter) }
+    );
+  }
+
   const body = await req.json().catch(() => null);
-  const raw = body?.raw;
-  if (typeof raw !== "string" || !raw.trim() || raw.length > 8000) {
-    return Response.json(
-      { error: { message: 'Body must be JSON: { "raw": "<prompt, max 8000 chars>" }' } },
-      { status: 400 }
-    );
+  const raw = (body as { raw?: unknown } | null)?.raw;
+  if (typeof raw !== "string" || !raw.trim() || raw.length > MAX_RAW_LENGTH) {
+    return error(`Body must be JSON: { "raw": "<prompt, max ${MAX_RAW_LENGTH} chars>" }`, 400);
   }
-  const key = process.env.GROQ_API_KEY;
-  if (!key) {
+
+  try {
+    const prompt = await convertPrompt(raw);
     return Response.json(
-      { error: { message: "GROQ_API_KEY is not configured on the server" } },
-      { status: 500 }
+      { prompt },
+      { headers: { "X-RateLimit-Remaining": String(limit.remaining) } }
     );
+  } catch (cause) {
+    if (cause instanceof GroqError) {
+      console.error(`[convert] ${cause.kind}: ${cause.message}`);
+      return error(cause.publicMessage, cause.status);
+    }
+    console.error("[convert] unexpected:", cause);
+    return error("Conversion failed unexpectedly. Try again.", 500);
   }
-  const groq = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: "Bearer " + key },
-    body: JSON.stringify({
-      model: "openai/gpt-oss-120b",
-      temperature: 0.3,
-      max_tokens: 2048,
-      messages: [
-        { role: "system", content: SYSTEM },
-        { role: "user", content: "Raw prompt:\n" + raw },
-      ],
-    }),
-  });
-  const data = await groq.json();
-  return Response.json(data, { status: groq.status });
 }

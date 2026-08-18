@@ -1,0 +1,45 @@
+{
+  "name": "isatvon-prompting",
+  "description": "Converts any raw prompt into an ISATVON-structured prompt for any AI platform (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, ...), with the response also returned in ISATVON structure. Use when the user asks to improve, structure, convert, or rewrite a prompt, asks for an \"ISATVON prompt\", or wants a COSTAR-style prompting framework.",
+  "license": "Apache-2.0",
+  "metadata": {
+    "version": "0.2.0",
+    "compatibility": [
+      "Claude Code",
+      "Claude Desktop",
+      "Any agent that loads SKILL.md files"
+    ]
+  },
+  "triggers": [
+    "convert this into an ISATVON prompt",
+    "structure my prompt for reliability",
+    "improve this prompt",
+    "rewrite this prompt properly",
+    "make this prompt verifiable",
+    "give me a COSTAR-style prompt",
+    "turn this into a proper prompt for Claude / ChatGPT / Gemini / Perplexity / Copilot / Grok"
+  ],
+  "files": {
+    "skill": "SKILL.md",
+    "templates": [
+      "templates/prompt-template.md",
+      "templates/prompt-template-lite.md"
+    ],
+    "references": [
+      "references/costar-comparison.md",
+      "references/domain-model.md",
+      "references/flow-guide.md",
+      "references/prompting-guide.md",
+      "references/response-format.md"
+    ],
+    "examples": [
+      "examples/generic-summarize.md",
+      "examples/chatgpt-marketing-email.md",
+      "examples/claude-code-review.md",
+      "examples/gemini-research-brief.md",
+      "examples/perplexity-market-research.md",
+      "examples/copilot-refactor.md",
+      "examples/grok-social-post.md"
+    ]
+  }
+}

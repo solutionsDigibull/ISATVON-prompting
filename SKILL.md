@@ -2,6 +2,12 @@
 name: isatvon-prompting
 description: Converts any raw prompt into an ISATVON-structured prompt for any AI platform (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, ...), with the response also returned in ISATVON structure. Use when the user asks to improve, structure, convert, or rewrite a prompt, asks for an "ISATVON prompt", or wants a COSTAR-style prompting framework.
 license: Apache-2.0
+metadata:
+  version: 0.2.0
+  compatibility:
+    - Claude Code
+    - Claude Desktop
+    - Any agent that loads SKILL.md files
 ---
 
 # ISATVON Prompting
@@ -25,6 +31,16 @@ COSTAR mapping: [references/costar-comparison.md](references/costar-comparison.m
 - The user wants a reusable, high-quality prompt for ChatGPT, Claude, Gemini, Perplexity,
   Copilot, Grok, or any other AI platform.
 - The user mentions COSTAR or asks for a prompting framework.
+
+## Trigger phrases
+
+- convert this into an ISATVON prompt
+- structure my prompt for reliability
+- improve this prompt
+- rewrite this prompt properly
+- make this prompt verifiable
+- give me a COSTAR-style prompt
+- turn this into a proper prompt for Claude / ChatGPT / Gemini / Perplexity / Copilot / Grok
 
 Where it measurably helps most: **writing/content and constraint-heavy tasks** (blind
 benchmark: 4.70/5 vs 3.40 baseline). For pure reasoning or coding one-liners, baseline

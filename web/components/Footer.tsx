@@ -50,8 +50,8 @@ export default function Footer() {
               <span className="logo-mark">IS</span>ISATVON
             </Link>
             <p className="text-[#aaa] text-[0.9rem] max-w-[300px]">
-              Structured prompting for reliable, reviewable and reusable AI
-              outputs. An open prompting framework by DigiBull AI.
+              Structured prompting for reliable, reviewable and reusable AI outputs. An open
+              prompting framework by DigiBull AI.
             </p>
           </div>
           {COLUMNS.map(([title, links]) => (

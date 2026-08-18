@@ -1,0 +1,45 @@
+name: Bug report
+description: Something in the repo, the skill, or the website is wrong or broken
+labels: [bug]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where
+      options:
+        - The skill (SKILL.md behaviour in an agent)
+        - A template or example
+        - The website / converter (isatvon.ai)
+        - The API (/api/convert, /api/templates)
+        - Docs or references
+        - Tooling (tests, CI, generation)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Include the exact prompt or URL, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. …
+        2. …
+        3. …
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model / platform and version
+      description: For skill or conversion issues — which model, which client.
+      placeholder: Claude Code, Opus 4.6
+  - type: markdown
+    attributes:
+      value: |
+        **Security issues do not go here.** See
+        [SECURITY.md](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/SECURITY.md) and email security@digibull.ai.

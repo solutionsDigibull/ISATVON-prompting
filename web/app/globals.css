@@ -220,6 +220,17 @@
     @apply font-display text-[0.9rem] tracking-[0.08em] bg-yellow text-ink border-2 border-white px-3.5 py-[3px] cursor-pointer hover:bg-primary hover:text-white;
   }
 
+  /* inline busy indicator for the convert button */
+  .spinner {
+    @apply inline-block align-[-2px] w-[0.85em] h-[0.85em] mr-1.5 border-2 border-current border-r-transparent rounded-full;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   .not-x {
     @apply font-display text-2xl text-white bg-red-brand border-2 border-ink min-w-[34px] text-center shrink-0;
   }
@@ -233,7 +244,7 @@
     border: 2px solid var(--color-ink);
   }
   .brutal-scroll::-webkit-scrollbar-track {
-    background: #fff;
+    background: var(--color-white);
     border: 2px solid var(--color-ink);
   }
 }

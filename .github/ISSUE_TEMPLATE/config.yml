@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/solutionsDigibull/ISATVON-prompting/discussions
+    about: Ask how to structure a prompt, or share one that worked. Not sure it's a bug? Start here.
+  - name: Security vulnerability
+    url: https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/SECURITY.md
+    about: Do not open a public issue — email security@digibull.ai.
+  - name: The ISATVON specification (JSON manifests for agent loops)
+    url: https://github.com/isatvon/isatvon
+    about: This repo is text prompts. Machine-validated agent contracts live there.

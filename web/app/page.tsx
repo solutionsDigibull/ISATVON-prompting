@@ -47,13 +47,41 @@ const faqJsonLd = {
 const PLATFORMS = ["ChatGPT", "Claude", "Gemini", "Perplexity", "Copilot", "Grok"];
 
 const STRUCTURE_ROWS = [
-  ["I", "Clear Instructions", "Define the AI’s role, exact task and non-negotiable rules before execution begins."],
-  ["S", "Grounded Sources", "Specify the documents, data or references the AI may use and what it must not invent or assume."],
-  ["A", "Verifiable Execution", "Define the workflow, checks and self-verification steps required before the final response."],
-  ["T", "Controlled Tool Use", "State which tools, integrations and capabilities are allowed, required or prohibited."],
-  ["V", "Measurable Constraints", "Set clear requirements for length, audience, tone, language, format, depth and fallback behaviour."],
-  ["O", "Defined Outcomes", "Describe the exact deliverable instead of allowing the AI to choose its own response structure."],
-  ["N", "Visible Assumptions", "Require the AI to disclose uncertainty, missing information, assumptions and confidence levels."],
+  [
+    "I",
+    "Clear Instructions",
+    "Define the AI’s role, exact task and non-negotiable rules before execution begins.",
+  ],
+  [
+    "S",
+    "Grounded Sources",
+    "Specify the documents, data or references the AI may use and what it must not invent or assume.",
+  ],
+  [
+    "A",
+    "Verifiable Execution",
+    "Define the workflow, checks and self-verification steps required before the final response.",
+  ],
+  [
+    "T",
+    "Controlled Tool Use",
+    "State which tools, integrations and capabilities are allowed, required or prohibited.",
+  ],
+  [
+    "V",
+    "Measurable Constraints",
+    "Set clear requirements for length, audience, tone, language, format, depth and fallback behaviour.",
+  ],
+  [
+    "O",
+    "Defined Outcomes",
+    "Describe the exact deliverable instead of allowing the AI to choose its own response structure.",
+  ],
+  [
+    "N",
+    "Visible Assumptions",
+    "Require the AI to disclose uncertainty, missing information, assumptions and confidence levels.",
+  ],
 ];
 
 const MOCK_ROWS = [
@@ -85,21 +113,108 @@ const FAILURES = [
 ];
 
 const BENEFITS: [string, string, string][] = [
-  ["min-[900px]:col-span-4 bg-yellow", "Reduce Misunderstood Tasks", "The model restates the assignment, making incorrect interpretation easier to identify."],
-  ["min-[900px]:col-span-2", "Reduce Unsupported Claims", "Explicit source boundaries reduce the likelihood of invented facts and untraceable statements."],
-  ["min-[900px]:col-span-2", "Reduce Repetitive Prompt Revisions", "Clear constraints and deliverables reduce the need for repeated correction prompts."],
-  ["min-[900px]:col-span-4 bg-primary text-white [&_p]:text-[#ffe4da]", "Improve Output Consistency", "Teams can apply the same prompting structure across departments, projects and AI platforms."],
-  ["min-[900px]:col-span-3", "Improve AI Quality Control", "Verification steps, source reporting and assumption disclosure make responses easier to audit."],
-  ["min-[900px]:col-span-3", "Avoid AI Platform Lock-In", "ISATVON works as portable plain text instead of tying your workflow to one AI product."],
+  [
+    "min-[900px]:col-span-4 bg-yellow",
+    "Reduce Misunderstood Tasks",
+    "The model restates the assignment, making incorrect interpretation easier to identify.",
+  ],
+  [
+    "min-[900px]:col-span-2",
+    "Reduce Unsupported Claims",
+    "Explicit source boundaries reduce the likelihood of invented facts and untraceable statements.",
+  ],
+  [
+    "min-[900px]:col-span-2",
+    "Reduce Repetitive Prompt Revisions",
+    "Clear constraints and deliverables reduce the need for repeated correction prompts.",
+  ],
+  [
+    "min-[900px]:col-span-4 bg-primary text-white [&_p]:text-[#ffe4da]",
+    "Improve Output Consistency",
+    "Teams can apply the same prompting structure across departments, projects and AI platforms.",
+  ],
+  [
+    "min-[900px]:col-span-3",
+    "Improve AI Quality Control",
+    "Verification steps, source reporting and assumption disclosure make responses easier to audit.",
+  ],
+  [
+    "min-[900px]:col-span-3",
+    "Avoid AI Platform Lock-In",
+    "ISATVON works as portable plain text instead of tying your workflow to one AI product.",
+  ],
 ];
 
 const USE_CASES: [string, string, string[]][] = [
-  ["Research and Analysis", "Define approved sources, research boundaries, comparison criteria and citation requirements.", ["Market research", "Competitor analysis", "Policy reviews", "Executive briefs", "Research summaries"]],
-  ["Content and Marketing", "Control the target audience, tone, keywords, structure, factual grounding and call to action.", ["Website content", "Blogs and articles", "Campaign copy", "Social media content", "Product messaging", "SEO and content briefs"]],
-  ["Software Development", "Specify the development environment, permitted libraries, coding standards, testing requirements and expected output.", ["Code generation", "Debugging", "Code review", "Refactoring", "Technical documentation", "Test planning"]],
-  ["Business Operations", "Turn unclear business requests into repeatable AI-assisted workflows.", ["SOP creation", "Proposals", "Meeting summaries", "Process documentation", "Internal reports", "Operational checklists"]],
-  ["Data Analysis and Reporting", "Define datasets, calculation rules, validation checks and reporting formats.", ["KPI analysis", "Dashboard summaries", "Data interpretation", "Management reports", "Performance reviews"]],
-  ["AI Agents and Automation", "Use ISATVON as a human-readable specification before converting the workflow into stricter machine-executable instructions.", ["Agent instructions", "Tool policies", "Workflow planning", "Pre-execution validation", "Automation specifications"]],
+  [
+    "Research and Analysis",
+    "Define approved sources, research boundaries, comparison criteria and citation requirements.",
+    [
+      "Market research",
+      "Competitor analysis",
+      "Policy reviews",
+      "Executive briefs",
+      "Research summaries",
+    ],
+  ],
+  [
+    "Content and Marketing",
+    "Control the target audience, tone, keywords, structure, factual grounding and call to action.",
+    [
+      "Website content",
+      "Blogs and articles",
+      "Campaign copy",
+      "Social media content",
+      "Product messaging",
+      "SEO and content briefs",
+    ],
+  ],
+  [
+    "Software Development",
+    "Specify the development environment, permitted libraries, coding standards, testing requirements and expected output.",
+    [
+      "Code generation",
+      "Debugging",
+      "Code review",
+      "Refactoring",
+      "Technical documentation",
+      "Test planning",
+    ],
+  ],
+  [
+    "Business Operations",
+    "Turn unclear business requests into repeatable AI-assisted workflows.",
+    [
+      "SOP creation",
+      "Proposals",
+      "Meeting summaries",
+      "Process documentation",
+      "Internal reports",
+      "Operational checklists",
+    ],
+  ],
+  [
+    "Data Analysis and Reporting",
+    "Define datasets, calculation rules, validation checks and reporting formats.",
+    [
+      "KPI analysis",
+      "Dashboard summaries",
+      "Data interpretation",
+      "Management reports",
+      "Performance reviews",
+    ],
+  ],
+  [
+    "AI Agents and Automation",
+    "Use ISATVON as a human-readable specification before converting the workflow into stricter machine-executable instructions.",
+    [
+      "Agent instructions",
+      "Tool policies",
+      "Workflow planning",
+      "Pre-execution validation",
+      "Automation specifications",
+    ],
+  ],
 ];
 
 const MARQUEE_ITEMS = [...PLATFORMS, ...USE_CASES.map(([name]) => name)];
@@ -114,10 +229,30 @@ const VS_ROWS: [string, string][] = [
 ];
 
 const STATS: [string, string, string, string][] = [
-  ["7", "text-primary", "Structured Sections", "One framework covering both prompt construction and response reporting."],
-  ["0", "text-secondary", "Required Dependencies", "Use ISATVON as markdown or plain text without installing another platform."],
-  ["6+", "text-ink", "AI Platforms", "Use the same structure with ChatGPT, Claude, Gemini, Perplexity, Copilot and Grok."],
-  ["100%", "text-primary", "Open Source", "Inspect the framework, adapt it to your workflow and contribute through GitHub."],
+  [
+    "7",
+    "text-primary",
+    "Structured Sections",
+    "One framework covering both prompt construction and response reporting.",
+  ],
+  [
+    "0",
+    "text-secondary",
+    "Required Dependencies",
+    "Use ISATVON as markdown or plain text without installing another platform.",
+  ],
+  [
+    "6+",
+    "text-ink",
+    "AI Platforms",
+    "Use the same structure with ChatGPT, Claude, Gemini, Perplexity, Copilot and Grok.",
+  ],
+  [
+    "100%",
+    "text-primary",
+    "Open Source",
+    "Inspect the framework, adapt it to your workflow and contribute through GitHub.",
+  ],
 ];
 
 const CHIPS = [
@@ -152,8 +287,8 @@ export default function Home() {
               <span className="hl hl-primary mx-1 my-1.5">Reliable AI Outputs</span>
             </h1>
             <p className="max-w-[620px] mb-9 text-[1.12rem] text-ink-soft">
-              Turn vague AI requests into clear, controlled, and verifiable
-              prompts for ChatGPT, Claude, Gemini, and other AI platforms.
+              Turn vague AI requests into clear, controlled, and verifiable prompts for ChatGPT,
+              Claude, Gemini, and other AI platforms.
             </p>
             <Reveal delay={0.1}>
               <div className="flex gap-[18px] flex-wrap">
@@ -191,10 +326,9 @@ export default function Home() {
             One Prompting Framework for <span className="hl">Multiple AI Platforms</span>
           </h2>
           <p className="section-sub">
-            ISATVON works in plain text, so you can use the same structured
-            prompt across different AI tools without rebuilding your workflow
-            for every platform. Your prompts remain portable, reusable and
-            easier to maintain even when your preferred AI platform changes.
+            ISATVON works in plain text, so you can use the same structured prompt across different
+            AI tools without rebuilding your workflow for every platform. Your prompts remain
+            portable, reusable and easier to maintain even when your preferred AI platform changes.
           </p>
         </div>
       </section>
@@ -225,9 +359,8 @@ export default function Home() {
             Turn Vague AI Requests Into <span className="hl">Clear Execution Briefs</span>
           </h2>
           <p className="section-sub">
-            Most prompts explain what the user wants but fail to define how the
-            AI should complete the task. They often leave critical details
-            unclear, including:
+            Most prompts explain what the user wants but fail to define how the AI should complete
+            the task. They often leave critical details unclear, including:
           </p>
           <Reveal>
             <div className="b-card max-w-[640px] mx-auto my-9 px-[30px] py-[26px]">
@@ -243,9 +376,8 @@ export default function Home() {
             </div>
           </Reveal>
           <p className="section-sub">
-            ISATVON converts a basic request into a structured execution brief.
-            This reduces ambiguity, makes assumptions visible and gives the AI
-            a clear response contract.
+            ISATVON converts a basic request into a structured execution brief. This reduces
+            ambiguity, makes assumptions visible and gives the AI a clear response contract.
           </p>
         </div>
       </section>
@@ -257,10 +389,9 @@ export default function Home() {
             Why Most AI Prompts Produce <span className="hl hl-primary">Inconsistent Results</span>
           </h2>
           <p className="section-sub">
-            Weak AI output is often blamed entirely on the model. In practice,
-            many failures begin with incomplete instructions. When sources,
-            constraints, verification steps and expected outcomes are missing,
-            the AI is forced to interpret the task and fill in the gaps. This
+            Weak AI output is often blamed entirely on the model. In practice, many failures begin
+            with incomplete instructions. When sources, constraints, verification steps and expected
+            outcomes are missing, the AI is forced to interpret the task and fill in the gaps. This
             can lead to:
           </p>
           <Reveal>
@@ -277,8 +408,7 @@ export default function Home() {
             </div>
           </Reveal>
           <p className="section-sub">
-            ISATVON gives each critical part of the task a defined place in the
-            prompt.
+            ISATVON gives each critical part of the task a defined place in the prompt.
           </p>
         </div>
       </section>
@@ -290,15 +420,17 @@ export default function Home() {
             Better AI Prompts Need <span className="hl">Structure</span>, Not Just More Words
           </h2>
           <p className="section-sub">
-            A long prompt is not automatically a good prompt. Reliable
-            prompting depends on clearly defining the task, evidence, process,
-            tools, limitations and final deliverable. ISATVON provides a
-            repeatable structure for controlling each of these elements.
+            A long prompt is not automatically a good prompt. Reliable prompting depends on clearly
+            defining the task, evidence, process, tools, limitations and final deliverable. ISATVON
+            provides a repeatable structure for controlling each of these elements.
           </p>
           <Reveal>
             <div className="mt-11 grid gap-x-14 border-b-2 border-ink min-[900px]:grid-cols-2">
               {STRUCTURE_ROWS.map(([letter, title, text]) => (
-                <div className="flex gap-[18px] py-5 border-t-2 border-ink items-baseline" key={letter}>
+                <div
+                  className="flex gap-[18px] py-5 border-t-2 border-ink items-baseline"
+                  key={letter}
+                >
                   <span className="font-display text-[1.7rem] leading-none bg-ink text-white min-w-10 text-center py-1 shrink-0">
                     {letter}
                   </span>
@@ -321,14 +453,16 @@ export default function Home() {
             How the ISATVON Prompting <span className="hl">Framework Works</span>
           </h2>
           <p className="section-sub">
-            ISATVON transforms a raw request into a structured prompt that can
-            be used across leading generative AI platforms.
+            ISATVON transforms a raw request into a structured prompt that can be used across
+            leading generative AI platforms.
           </p>
           <Reveal>
             <Pipeline />
           </Reveal>
           <div className="text-center mt-11">
-            <Link className="b-btn b-btn-primary" href="/prompting">Convert Your Prompt</Link>
+            <Link className="b-btn b-btn-primary" href="/prompting">
+              Convert Your Prompt
+            </Link>
           </div>
         </div>
       </section>
@@ -341,10 +475,9 @@ export default function Home() {
             The Seven Sections of the <span className="hl">ISATVON Framework</span>
           </h2>
           <p className="section-sub">
-            ISATVON stands for Instructions, Source, Automation, Tech Stack,
-            Variables, Outcome and Notification. Each section works in two
-            directions: it tells the AI how to perform the task, and it tells
-            the AI what it must report in the response.
+            ISATVON stands for Instructions, Source, Automation, Tech Stack, Variables, Outcome and
+            Notification. Each section works in two directions: it tells the AI how to perform the
+            task, and it tells the AI what it must report in the response.
           </p>
           <Reveal>
             <SevenGrid />
@@ -359,10 +492,9 @@ export default function Home() {
             Structure the AI <span className="hl">Response</span>, Not Just the Prompt
           </h2>
           <p className="section-sub">
-            Most prompting frameworks focus on organising the user&rsquo;s
-            request but provide limited control over what the AI reports back.
-            ISATVON creates a two-way structure. The prompt defines how the
-            task should be executed. The response then explains how the task
+            Most prompting frameworks focus on organising the user&rsquo;s request but provide
+            limited control over what the AI reports back. ISATVON creates a two-way structure. The
+            prompt defines how the task should be executed. The response then explains how the task
             was understood, completed and verified.
           </p>
           <Reveal>
@@ -379,8 +511,8 @@ export default function Home() {
             </div>
           </Reveal>
           <p className="section-sub">
-            This makes AI output easier to inspect, compare, review and reuse
-            in professional workflows.
+            This makes AI output easier to inspect, compare, review and reuse in professional
+            workflows.
           </p>
         </div>
       </section>
@@ -412,8 +544,8 @@ export default function Home() {
             ISATVON <span className="hl">Use Cases</span>
           </h2>
           <p className="section-sub">
-            ISATVON is designed for tasks where clarity, repeatability,
-            verification and output control matter.
+            ISATVON is designed for tasks where clarity, repeatability, verification and output
+            control matter.
           </p>
           <Reveal>
             <div className="brutal-scroll mt-12 grid grid-flow-col auto-cols-[min(340px,82vw)] gap-6 overflow-x-auto snap-x snap-mandatory px-1 pt-1 pb-[22px] [&>*]:snap-start">
@@ -437,7 +569,8 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <h2 className="section-title display">
-            See the Difference Between a <span className="hl hl-primary">Raw Prompt</span> and an <span className="hl">ISATVON Prompt</span>
+            See the Difference Between a <span className="hl hl-primary">Raw Prompt</span> and an{" "}
+            <span className="hl">ISATVON Prompt</span>
           </h2>
           <Reveal>
             <div className="mt-12 grid gap-9 items-start min-[900px]:grid-cols-2">
@@ -467,24 +600,24 @@ export default function Home() {
                 </div>
                 <div className="p-5 text-[0.9rem]">
                   <p>
-                    Act as a senior Python reviewer. Review only the supplied
-                    code for correctness, security and maintainability. Do not
-                    assume missing dependencies. Classify findings as Critical,
-                    High, Medium or Low. Explain each issue, identify the
-                    affected function and provide a minimal corrected snippet.
-                    Verify that every recommendation relates directly to the
-                    submitted code. Report assumptions separately.
+                    Act as a senior Python reviewer. Review only the supplied code for correctness,
+                    security and maintainability. Do not assume missing dependencies. Classify
+                    findings as Critical, High, Medium or Low. Explain each issue, identify the
+                    affected function and provide a minimal corrected snippet. Verify that every
+                    recommendation relates directly to the submitted code. Report assumptions
+                    separately.
                   </p>
                 </div>
               </div>
             </div>
           </Reveal>
           <p className="section-sub mt-9">
-            The structured prompt produces a narrower, more relevant and
-            easier-to-review response.
+            The structured prompt produces a narrower, more relevant and easier-to-review response.
           </p>
           <div className="text-center mt-8">
-            <Link className="b-btn" href="/prompting">Open the Prompt Library</Link>
+            <Link className="b-btn" href="/prompting">
+              Open the Prompt Library
+            </Link>
           </div>
         </div>
       </section>
@@ -496,10 +629,10 @@ export default function Home() {
             ISATVON <span className="hl">vs</span> COSTAR Prompting Framework
           </h2>
           <p className="section-sub">
-            COSTAR helps structure context, objectives, style, tone, audience
-            and response requirements. ISATVON covers similar foundations while
-            adding explicit controls for sources, execution methods, tool use,
-            verification, measurable constraints and assumption reporting.
+            COSTAR helps structure context, objectives, style, tone, audience and response
+            requirements. ISATVON covers similar foundations while adding explicit controls for
+            sources, execution methods, tool use, verification, measurable constraints and
+            assumption reporting.
           </p>
           <Reveal>
             <div className="mt-9 overflow-x-auto">
@@ -507,7 +640,9 @@ export default function Home() {
                 <thead>
                   <tr>
                     <th className={thCls}>Section</th>
-                    <th className={`${thCls.replace("bg-paper", "bg-yellow")}`}>What ISATVON adds</th>
+                    <th className={`${thCls.replace("bg-paper", "bg-yellow")}`}>
+                      What ISATVON adds
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -528,12 +663,14 @@ export default function Home() {
             </div>
           </Reveal>
           <p className="section-sub mt-9">
-            ISATVON is not intended to replace every prompting method. It is
-            better suited to tasks where accuracy, consistency, traceability
-            and output control matter more than speed alone.
+            ISATVON is not intended to replace every prompting method. It is better suited to tasks
+            where accuracy, consistency, traceability and output control matter more than speed
+            alone.
           </p>
           <div className="text-center mt-8">
-            <Link className="b-btn" href="/isatvon-vs-costar">Compare ISATVON and COSTAR</Link>
+            <Link className="b-btn" href="/isatvon-vs-costar">
+              Compare ISATVON and COSTAR
+            </Link>
           </div>
         </div>
       </section>
@@ -545,32 +682,33 @@ export default function Home() {
             Convert a Raw Prompt Into an <span className="hl">ISATVON Prompt</span>
           </h2>
           <p className="section-sub">
-            Paste a basic request into the ISATVON Prompt Converter. The
-            converter organises your request into instructions, approved
-            sources, execution steps, tool requirements, measurable variables,
-            expected outcomes, and assumption and confidence reporting. Review
-            the generated structure, adjust the details and use it with your
-            preferred AI platform.
+            Paste a basic request into the ISATVON Prompt Converter. The converter organises your
+            request into instructions, approved sources, execution steps, tool requirements,
+            measurable variables, expected outcomes, and assumption and confidence reporting. Review
+            the generated structure, adjust the details and use it with your preferred AI platform.
           </p>
           <Reveal>
             <div className="b-card max-w-[720px] mx-auto mt-9 text-left">
               <div className="mock-bar">raw-prompt.txt</div>
               <div className="px-[26px] py-[22px]">
                 <p className="italic text-ink-soft">
-                  &ldquo;Create a competitor analysis for our SaaS product using
-                  the attached research.&rdquo;
+                  &ldquo;Create a competitor analysis for our SaaS product using the attached
+                  research.&rdquo;
                 </p>
               </div>
             </div>
           </Reveal>
           <div className="flex gap-[18px] justify-center flex-wrap mt-7">
-            <Link className="b-btn b-btn-primary" href="/prompting">Convert Your Prompt</Link>
-            <Link className="b-btn b-btn-yellow" href="/prompting">Open the Prompt Library</Link>
+            <Link className="b-btn b-btn-primary" href="/prompting">
+              Convert Your Prompt
+            </Link>
+            <Link className="b-btn b-btn-yellow" href="/prompting">
+              Open the Prompt Library
+            </Link>
           </div>
           <p className="text-[0.85rem] text-ink-mute max-w-[560px] mx-auto mt-5">
-            The converter improves prompt structure. It cannot compensate for
-            missing context, unreliable source material or unrealistic
-            requirements.
+            The converter improves prompt structure. It cannot compensate for missing context,
+            unreliable source material or unrealistic requirements.
           </p>
         </div>
       </section>
@@ -582,9 +720,8 @@ export default function Home() {
             Explore Ready-to-Use ISATVON <span className="hl">Prompt Templates</span>
           </h2>
           <p className="section-sub">
-            Start with a structured template instead of building every
-            professional prompt from scratch. The ISATVON Prompt Library
-            includes adaptable templates for:
+            Start with a structured template instead of building every professional prompt from
+            scratch. The ISATVON Prompt Library includes adaptable templates for:
           </p>
           <Reveal>
             <div className="flex flex-wrap gap-3 justify-center mt-7 mb-12">
@@ -595,7 +732,9 @@ export default function Home() {
               ))}
             </div>
           </Reveal>
-          <Link className="b-btn" href="/prompting">Open the Prompt Library</Link>
+          <Link className="b-btn" href="/prompting">
+            Open the Prompt Library
+          </Link>
         </div>
       </section>
 
@@ -617,7 +756,9 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="text-center mt-11">
-            <a className="b-btn" href={GITHUB} target="_blank" rel="noopener">View on GitHub</a>
+            <a className="b-btn" href={GITHUB} target="_blank" rel="noopener">
+              View on GitHub
+            </a>
           </div>
         </div>
       </section>
@@ -633,23 +774,40 @@ export default function Home() {
             <div className="mt-10 grid gap-5 max-w-[760px] mx-auto">
               <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
                 <span className="not-x">✕</span>
-                <div><strong className="block">Simple Creative Requests</strong> A basic caption, rewrite or tone adjustment usually does not require all seven sections.</div>
+                <div>
+                  <strong className="block">Simple Creative Requests</strong> A basic caption,
+                  rewrite or tone adjustment usually does not require all seven sections.
+                </div>
               </div>
               <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
                 <span className="not-x">✕</span>
-                <div><strong className="block">Casual AI Conversations</strong> ISATVON is designed for structured deliverables, not ordinary back-and-forth conversation.</div>
+                <div>
+                  <strong className="block">Casual AI Conversations</strong> ISATVON is designed for
+                  structured deliverables, not ordinary back-and-forth conversation.
+                </div>
               </div>
               <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
                 <span className="not-x">✕</span>
-                <div><strong className="block">Incomplete or Unreliable Sources</strong> A well-structured prompt cannot produce dependable analysis from poor information.</div>
+                <div>
+                  <strong className="block">Incomplete or Unreliable Sources</strong> A
+                  well-structured prompt cannot produce dependable analysis from poor information.
+                </div>
               </div>
               <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
                 <span className="not-x">✕</span>
-                <div><strong className="block">Strict Machine-Execution Contracts</strong> Deterministic agent loops, schemas, retries and guaranteed tool execution require a machine-readable specification and validator, not a prompting convention.</div>
+                <div>
+                  <strong className="block">Strict Machine-Execution Contracts</strong>{" "}
+                  Deterministic agent loops, schemas, retries and guaranteed tool execution require
+                  a machine-readable specification and validator, not a prompting convention.
+                </div>
               </div>
               <div className="b-card flex gap-4 px-[22px] py-[18px] items-baseline">
                 <span className="not-x">✕</span>
-                <div><strong className="block">High-Risk Decisions Without Expert Review</strong> ISATVON improves transparency but does not replace legal, medical, financial, security or other professional judgement.</div>
+                <div>
+                  <strong className="block">High-Risk Decisions Without Expert Review</strong>{" "}
+                  ISATVON improves transparency but does not replace legal, medical, financial,
+                  security or other professional judgement.
+                </div>
               </div>
             </div>
           </Reveal>
@@ -663,15 +821,21 @@ export default function Home() {
             Stop Re-Prompting. Start Specifying.
           </p>
           <p className="text-white max-w-[560px] mx-auto mb-7">
-            Give AI the instructions, evidence, boundaries and output contract
-            it needs to perform useful work. Turn your next vague request into
-            a structured, reviewable and reusable AI prompt.
+            Give AI the instructions, evidence, boundaries and output contract it needs to perform
+            useful work. Turn your next vague request into a structured, reviewable and reusable AI
+            prompt.
           </p>
           <div className="flex gap-[18px] justify-center flex-wrap mb-[18px]">
-            <Link className="b-btn hover:bg-yellow" href="/prompting">Convert Your Prompt</Link>
-            <Link className="b-btn hover:bg-yellow" href="/prompting">Copy the Template</Link>
+            <Link className="b-btn hover:bg-yellow" href="/prompting">
+              Convert Your Prompt
+            </Link>
+            <Link className="b-btn hover:bg-yellow" href="/prompting">
+              Copy the Template
+            </Link>
           </div>
-          <p className="text-[0.85rem] text-[#ffd9cc] mt-4">Open framework. Works with your existing AI tools.</p>
+          <p className="text-[0.85rem] text-[#ffd9cc] mt-4">
+            Open framework. Works with your existing AI tools.
+          </p>
         </div>
       </section>
 

@@ -1,0 +1,21 @@
+{
+  // Prose is the product here, so the rules that reformat prose are off:
+  // line length (MD013) and inline HTML (MD033, used by the README banner).
+  "globs": ["**/*.md"],
+  "ignores": [
+    "**/node_modules/**",
+    "web/.next/**",
+    "web/.agents/**",
+    "web/playwright-report/**",
+    "web/coverage/**",
+  ],
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD033": false,
+    "MD041": false,
+    "MD024": { "siblings_only": true },
+    // table pipe padding is cosmetic and the compact style is used throughout
+    "MD060": false,
+  },
+}

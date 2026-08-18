@@ -1,3 +1,18 @@
+---
+id: generic
+order: 1
+platform: Any
+difficulty: beginner
+category: writing
+tags: [summary, word-count, verification]
+raw-quality: naive
+contributed-by: solutionsDigibull
+date: 2026-07-08
+nav: "Generic: Summarize"
+chip: "Summarize a report…"
+tagline: "Any platform. The classic vague ask, made checkable."
+---
+
 # Generic — Summarize a document (any platform)
 
 ## Raw prompt

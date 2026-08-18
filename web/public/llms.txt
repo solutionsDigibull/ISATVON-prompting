@@ -34,16 +34,26 @@ answer, and requires the model to self-verify and to declare its assumptions.
 - [Full prompt template](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/templates/prompt-template.md)
 - [Lite prompt template](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/templates/prompt-template-lite.md)
 - [Prompting guide](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/references/prompting-guide.md)
-- [Response format specification](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/references/response-format.md)
+- [Response format specification](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/references/response-format.md) and [standalone response template](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/templates/response-template.md)
+- [Domain model and glossary](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/references/domain-model.md)
+- [Flow guide: convert or skip, full or lite, which section to fix](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/references/flow-guide.md)
 - [COSTAR comparison](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/references/costar-comparison.md)
 - [Agent skill definition](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/SKILL.md) and [machine-readable copy](https://www.isatvon.ai/isatvon-skill.md)
 - [Evaluation transcripts](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/EVALS.md)
+
+## Machine-readable
+
+- [Skill registry](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/skill-registry.json): name, version, trigger phrases and file inventory, generated from SKILL.md.
+- [Example index](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/examples/index.json): every worked example with platform, difficulty, category and tags.
+- [Templates and examples as JSON](https://www.isatvon.ai/api/templates): both templates and all examples, generated from the repository markdown.
+- [Prompt conversion API](https://www.isatvon.ai/openapi.yaml): OpenAPI description of POST /api/convert and GET /api/templates.
 
 ## Optional
 
 - [Installation guide](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/INSTALL.md)
 - [Worked examples](https://github.com/solutionsDigibull/ISATVON-prompting/tree/main/examples)
-- [Contributing](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/CONTRIBUTING.md)
+- [Contributing](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/CONTRIBUTING.md) and [how to write an example](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/docs/examples-guide.md)
+- [FAQ](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/docs/faq.md), [first prompt tutorial](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/docs/tutorials/first-prompt.md), [per-platform tuning](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/docs/tutorials/platform-guide.md)
 - [DigiBull AI](https://digibull.ai), maintainer.
 
 ## When not to use ISATVON

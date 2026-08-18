@@ -1,0 +1,118 @@
+{
+  "count": 7,
+  "generated_by": "web/scripts/build-content.ts",
+  "examples": [
+    {
+      "id": "generic",
+      "title": "Generic — Summarize a document (any platform)",
+      "path": "generic-summarize.md",
+      "platform": "Any",
+      "difficulty": "beginner",
+      "category": "writing",
+      "tags": [
+        "summary",
+        "word-count",
+        "verification"
+      ],
+      "raw-quality": "naive",
+      "description": "Any platform. The classic vague ask, made checkable.",
+      "raw": "Summarize this report for me, keep it short."
+    },
+    {
+      "id": "chatgpt",
+      "title": "ChatGPT — Marketing email",
+      "path": "chatgpt-marketing-email.md",
+      "platform": "ChatGPT",
+      "difficulty": "intermediate",
+      "category": "marketing",
+      "tags": [
+        "email",
+        "copywriting",
+        "constraints"
+      ],
+      "raw-quality": "mediocre",
+      "description": "Pin the product facts so the email can't acquire imaginary features.",
+      "raw": "Write a marketing email for our new project management app."
+    },
+    {
+      "id": "claude",
+      "title": "Claude — Code review",
+      "path": "claude-code-review.md",
+      "platform": "Claude",
+      "difficulty": "intermediate",
+      "category": "engineering",
+      "tags": [
+        "code-review",
+        "severity",
+        "verification"
+      ],
+      "raw-quality": "naive",
+      "description": "\"Is it good?\" invites vague praise. This restricts the review to defects with line citations.",
+      "raw": "Can you review this code and tell me if it's good?"
+    },
+    {
+      "id": "gemini",
+      "title": "Gemini — Research brief",
+      "path": "gemini-research-brief.md",
+      "platform": "Gemini",
+      "difficulty": "advanced",
+      "category": "research",
+      "tags": [
+        "research",
+        "citations",
+        "recency"
+      ],
+      "raw-quality": "naive",
+      "description": "Handles both grounded-search and knowledge-cutoff modes explicitly.",
+      "raw": "Tell me about the current state of small modular reactors."
+    },
+    {
+      "id": "perplexity",
+      "title": "Perplexity — Market research",
+      "path": "perplexity-market-research.md",
+      "platform": "Perplexity",
+      "difficulty": "advanced",
+      "category": "research",
+      "tags": [
+        "market-research",
+        "citations",
+        "comparison"
+      ],
+      "raw-quality": "mediocre",
+      "description": "\"Best right now\" becomes \"best fit for this buyer, verified against sources ≤ 12 months old\".",
+      "raw": "What are the best project management tools right now?"
+    },
+    {
+      "id": "copilot",
+      "title": "GitHub Copilot — Refactor",
+      "path": "copilot-refactor.md",
+      "platform": "Copilot",
+      "difficulty": "intermediate",
+      "category": "engineering",
+      "tags": [
+        "refactor",
+        "behavior-preservation",
+        "tests"
+      ],
+      "raw-quality": "mediocre",
+      "description": "\"Too long\" becomes a testable contract: identical signature, all paths preserved.",
+      "raw": "Refactor this function, it's too long."
+    },
+    {
+      "id": "grok",
+      "title": "Grok — Social post",
+      "path": "grok-social-post.md",
+      "platform": "Grok",
+      "difficulty": "beginner",
+      "category": "marketing",
+      "tags": [
+        "social",
+        "character-limit",
+        "variants"
+      ],
+      "raw-quality": "naive",
+      "description": "\"Viral\" is not a writable instruction. This replaces it with the mechanics that earn shares.",
+      "raw": "Write a viral post about our AI framework launch."
+    }
+  ]
+}

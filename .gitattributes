@@ -1,0 +1,16 @@
+# Keep the working tree LF on every platform.
+#
+# Without this, a clone with core.autocrlf=true (the Windows default) gets CRLF
+# files, and then `prettier --check` — which defaults to endOfLine: "lf" — fails
+# on every file in the repo. The pre-commit hook stashes and restores through
+# git, so it converts the tree on the first commit and the failure looks like it
+# came from nowhere.
+* text=auto eol=lf
+
+# Binary assets git must never touch.
+*.png -text
+*.webp -text
+*.ico -text
+*.woff -text
+*.woff2 -text
+*.zip -text

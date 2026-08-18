@@ -1,0 +1,165 @@
+openapi: 3.1.0
+info:
+  title: ISATVON API
+  version: 0.2.0
+  description: |
+    Two public, unauthenticated endpoints behind the ISATVON website.
+
+    `POST /api/convert` rewrites a raw prompt into ISATVON structure via Groq and is rate
+    limited to 10 requests per minute per client. `GET /api/templates` serves the templates
+    and example conversions generated from the repository markdown, and is cached.
+
+    Prompts are forwarded to Groq for conversion and are not stored by this service.
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://www.isatvon.ai
+    description: production
+  - url: http://localhost:3000
+    description: local development
+
+paths:
+  /api/convert:
+    post:
+      summary: Convert a raw prompt into an ISATVON prompt
+      operationId: convertPrompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConvertRequest"
+            example:
+              raw: Write a launch email for our new project management app.
+      responses:
+        "200":
+          description: The converted prompt.
+          headers:
+            X-RateLimit-Remaining:
+              description: Requests left in the current one-minute window.
+              schema: { type: integer }
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConvertResponse"
+        "400":
+          description: Missing, empty, non-string, or over-long `raw`.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "429":
+          description: Rate limit reached.
+          headers:
+            Retry-After:
+              description: Seconds to wait before retrying.
+              schema: { type: integer }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "500":
+          description: The server has no Groq API key configured.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "502":
+          description: Upstream failure, or a response that was not the expected shape.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "504":
+          description: The upstream call exceeded the 30s timeout.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /api/templates:
+    get:
+      summary: The ISATVON templates and example conversions
+      operationId: getTemplates
+      responses:
+        "200":
+          description: Templates and examples, generated from the repository markdown.
+          headers:
+            Cache-Control:
+              schema: { type: string }
+              example: public, s-maxage=86400, stale-while-revalidate=604800
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplatesResponse"
+
+components:
+  schemas:
+    ConvertRequest:
+      type: object
+      required: [raw]
+      properties:
+        raw:
+          type: string
+          minLength: 1
+          maxLength: 8000
+          description: The unstructured prompt to convert.
+
+    ConvertResponse:
+      type: object
+      required: [prompt]
+      properties:
+        prompt:
+          type: string
+          description: |
+            The converted prompt as markdown — seven `## X — Name` sections, or the
+            three-section Lite form for a self-contained one-shot question.
+
+    TemplatesResponse:
+      type: object
+      required: [templates, examples]
+      properties:
+        templates:
+          type: array
+          items:
+            type: object
+            required: [id, file, sections, body]
+            properties:
+              id: { type: string, example: prompt-template }
+              file: { type: string, example: prompt-template.md }
+              sections:
+                type: array
+                items: { type: string, enum: [I, S, A, T, V, O, N] }
+              body: { type: string }
+        examples:
+          type: array
+          items:
+            type: object
+            required: [id, title, platform, difficulty, raw, prompt]
+            properties:
+              id: { type: string, example: claude }
+              title: { type: string }
+              platform: { type: string, example: Claude }
+              difficulty:
+                type: string
+                enum: [beginner, intermediate, advanced]
+              category: { type: string }
+              tags:
+                type: array
+                items: { type: string }
+              raw: { type: string, description: The "before" prompt. }
+              prompt: { type: string, description: The converted ISATVON prompt. }
+              why:
+                type: array
+                items: { type: string }
+              source: { type: string, format: uri }
+
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [message]
+          properties:
+            message:
+              type: string
+              description: |
+                A safe, human-readable message. Upstream error bodies are logged
+                server-side and never returned here.

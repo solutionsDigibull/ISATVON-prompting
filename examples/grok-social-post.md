@@ -1,3 +1,18 @@
+---
+id: grok
+order: 7
+platform: Grok
+difficulty: beginner
+category: marketing
+tags: [social, character-limit, variants]
+raw-quality: naive
+contributed-by: solutionsDigibull
+date: 2026-07-08
+nav: "Grok: Social post"
+chip: "Announce a launch…"
+tagline: "\"Viral\" is not a writable instruction. This replaces it with the mechanics that earn shares."
+---
+
 # Grok — Social post
 
 ## Raw prompt

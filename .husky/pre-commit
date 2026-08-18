@@ -1,0 +1,11 @@
+# Fast checks only — the full test suite runs in CI.
+npx --prefix web lint-staged || exit 1
+
+# The website renders generated copies of examples/ and templates/; a commit that
+# changes the markdown without regenerating them ships a site that disagrees with
+# the repo.
+npm --prefix web run content:check || {
+  echo ""
+  echo "Run 'npm --prefix web run content' and stage the regenerated files."
+  exit 1
+}

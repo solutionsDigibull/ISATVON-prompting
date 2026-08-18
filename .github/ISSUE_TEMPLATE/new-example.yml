@@ -1,0 +1,52 @@
+name: New example conversion
+description: Contribute a before/after conversion, or suggest one worth having
+title: "example: <platform> — <task>"
+labels: [example]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Examples are the most useful contribution to this repo. Full guide:
+        [docs/examples-guide.md](https://github.com/solutionsDigibull/ISATVON-prompting/blob/main/docs/examples-guide.md).
+
+        Already written the file? Open a pull request instead — this form is for
+        proposing one, or for handing over a raw prompt for someone else to convert.
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: Claude / ChatGPT / Gemini / Perplexity / Copilot / Grok / Any
+    validations:
+      required: true
+  - type: textarea
+    id: raw
+    attributes:
+      label: The raw prompt
+      description: A real one you actually typed, not an invented bad one.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: What went wrong with it
+      description: What did the model do that you did not want — invented a fact, wrong shape, wrong length, wrong task?
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      description: About the prompt's complexity, not your skill.
+      options:
+        - beginner — one or two constraints, no external source
+        - intermediate — multi-constraint, or grounded in pasted material
+        - advanced — citation, recency or verification rules to check
+    validations:
+      required: true
+  - type: textarea
+    id: converted
+    attributes:
+      label: The converted prompt (optional)
+      description: If you already have one, paste it — seven sections in I-S-A-T-V-O-N order.
+      render: markdown

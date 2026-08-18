@@ -1,3 +1,18 @@
+---
+id: perplexity
+order: 5
+platform: Perplexity
+difficulty: advanced
+category: research
+tags: [market-research, citations, comparison]
+raw-quality: mediocre
+contributed-by: solutionsDigibull
+date: 2026-07-08
+nav: "Perplexity: Market research"
+chip: "Compare tools…"
+tagline: "\"Best right now\" becomes \"best fit for this buyer, verified against sources ≤ 12 months old\"."
+---
+
 # Perplexity — Market research
 
 ## Raw prompt
