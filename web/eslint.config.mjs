@@ -13,6 +13,11 @@ const config = [
     ],
   },
   ...next,
+  {
+    // react/display-name crashes under ESLint 10's flat-config API
+    // (eslint-plugin-react calls context.getFilename(), removed in v10).
+    rules: { "react/display-name": "off" },
+  },
 ];
 
 export default config;
