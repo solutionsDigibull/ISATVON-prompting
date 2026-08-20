@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Fragment, useState } from "react";
 import Converter from "./Converter";
 import PromptView from "./PromptView";
@@ -118,9 +119,13 @@ export default function Library() {
 
       <main className="px-11 pt-12 pb-20 min-w-0 max-[900px]:px-5 max-[900px]:pt-9 max-[900px]:pb-[60px]">
         <div className="text-center mb-11">
-          <span className="logo-mark display text-[2.2rem] inline-block mb-4.5 px-4 py-1.5">
-            IS
-          </span>
+          <Image
+            src="/digibull-bull-logo.png"
+            alt=""
+            width={80}
+            height={80}
+            className="logo-mark inline-block mb-4.5"
+          />
           <h1 className="text-[clamp(2rem,4.5vw,3.2rem)]">Convert your prompt</h1>
           <p className="text-ink-mute mt-2.5">
             Paste a raw prompt and get it back in ISATVON structure. Edit, copy, regenerate.

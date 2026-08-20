@@ -8,6 +8,10 @@ export const GITHUB = "https://github.com/solutionsDigibull/ISATVON-prompting";
 
 export const DIGIBULL_URL = "https://digibull.ai";
 
+export const GOOGLE_SITE_VERIFICATION = "GhypkCeKITnQMVd0wb0aMcDu_EpVet4XOT9vUb5wKR4";
+
+export const GA_MEASUREMENT_ID = "G-XQY3Z4TS70";
+
 /**
  * Page-level metadata. Next replaces the parent `openGraph`/`twitter` objects
  * wholesale instead of merging, so a page that sets its own drops the root's

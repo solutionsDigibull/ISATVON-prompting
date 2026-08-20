@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { GITHUB, DIGIBULL_URL } from "@/app/config";
 
@@ -15,7 +16,7 @@ const COLUMNS: [string, [string, string, boolean?][]][] = [
     "Resources",
     [
       ["/prompting", "Prompt Converter"],
-      ["/prompting", "Prompt Library"],
+      [`${GITHUB}/blob/main/templates/prompt-template.md`, "Prompt Library", true],
       [`${GITHUB}/tree/main/examples`, "Examples", true],
       [`${GITHUB}/blob/main/INSTALL.md`, "Installation Guide", true],
       [GITHUB, "GitHub", true],
@@ -47,7 +48,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 min-[560px]:grid-cols-2 min-[900px]:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10 mb-11 [&_ul_a]:text-[#ccc] [&_ul_a]:no-underline [&_ul_a]:text-[0.92rem] [&_ul_a:hover]:text-white [&_ul_a:hover]:underline">
           <div>
             <Link className="logo text-white mb-3" href="/">
-              <span className="logo-mark">IS</span>ISATVON
+              <Image
+                src="/digibull-bull-logo.png"
+                alt=""
+                width={40}
+                height={40}
+                className="logo-mark -translate-y-1"
+              />
+              ISATVON
             </Link>
             <p className="text-[#aaa] text-[0.9rem] max-w-[300px]">
               Structured prompting for reliable, reviewable and reusable AI outputs. An open
