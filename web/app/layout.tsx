@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import DigiBullBadge from "@/components/DigiBullBadge";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { SITE_URL, GITHUB, DIGIBULL_URL } from "./config";
+import {
+  SITE_URL,
+  GITHUB,
+  DIGIBULL_URL,
+  GOOGLE_SITE_VERIFICATION,
+  GA_MEASUREMENT_ID,
+} from "./config";
 
 // variable names must differ from the @theme font tokens they feed (globals.css)
 const bebas = Bebas_Neue({
@@ -31,6 +38,8 @@ export const metadata: Metadata = {
     template: "%s | ISATVON",
   },
   description,
+  icons: { icon: "/icon.png" },
+  verification: { google: GOOGLE_SITE_VERIFICATION },
   keywords: [
     "structured prompting framework",
     "AI prompting framework",
@@ -99,6 +108,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');`}
+        </Script>
         <Nav />
         {children}
         <Footer />

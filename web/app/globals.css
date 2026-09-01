@@ -188,7 +188,7 @@
     @apply font-display text-[1.7rem] no-underline flex items-center gap-2.5;
   }
   .logo-mark {
-    @apply bg-primary text-white border-2 border-ink shadow-brutal-xs px-2 -rotate-3;
+    @apply shrink-0;
   }
 
   .mock-bar {
