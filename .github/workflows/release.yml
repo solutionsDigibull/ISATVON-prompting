@@ -54,7 +54,7 @@ jobs:
             echo "No CHANGELOG.md section for $version." > RELEASE_NOTES.md
           fi
 
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           body_path: RELEASE_NOTES.md
           files: isatvon-prompting-skill.zip
