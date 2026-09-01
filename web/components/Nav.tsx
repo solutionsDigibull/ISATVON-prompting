@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { GITHUB } from "@/app/config";
@@ -7,9 +8,8 @@ import { GITHUB } from "@/app/config";
 const LINKS: [string, string][] = [
   ["/how-it-works", "Framework"],
   ["/#how", "How It Works"],
-  ["/#use-cases", "Use Cases"],
+  ["/use-cases", "Use Cases"],
   ["/isatvon-vs-costar", "ISATVON vs COSTAR"],
-  ["/prompting", "Prompt Library"],
 ];
 
 const linkCls =
@@ -21,7 +21,14 @@ export default function Nav() {
     <nav className="sticky top-0 z-50 bg-white border-b-[3px] border-ink">
       <div className="container flex items-center justify-between h-[68px] gap-4">
         <Link className="logo" href="/">
-          <span className="logo-mark">IS</span>ISATVON
+          <Image
+            src="/digibull-bull-logo.png"
+            alt=""
+            width={40}
+            height={40}
+            className="logo-mark -translate-y-1"
+          />
+          ISATVON
         </Link>
         <button
           className="min-[900px]:hidden bg-white border-brutal shadow-brutal-sm font-display text-base px-3 py-1.5 cursor-pointer"
@@ -48,6 +55,19 @@ export default function Nav() {
               </Link>
             </li>
           ))}
+          <li
+            className="max-[900px]:motion-safe:animate-pane-in-stagger"
+            style={{ animationDelay: "0.16s" }}
+          >
+            <a
+              className={linkCls}
+              href={`${GITHUB}/blob/main/templates/prompt-template.md`}
+              target="_blank"
+              rel="noopener"
+            >
+              Prompt Library
+            </a>
+          </li>
           <li
             className="max-[900px]:motion-safe:animate-pane-in-stagger"
             style={{ animationDelay: "0.2s" }}

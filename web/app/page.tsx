@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { GITHUB } from "./config";
 import { Pipeline, SevenGrid } from "@/components/Framework";
@@ -337,7 +338,14 @@ export default function Home() {
           {[0, 1].map((copy) => (
             <div className="flex flex-nowrap" key={copy} aria-hidden={copy === 1 || undefined}>
               <Link href="/" className="logo mr-3.5 shrink-0">
-                <span className="logo-mark">IS</span>ISATVON
+                <Image
+                  src="/digibull-bull-logo.png"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="logo-mark -translate-y-1"
+                />
+                ISATVON
               </Link>
               {MARQUEE_ITEMS.map((item) => (
                 <span
@@ -615,9 +623,14 @@ export default function Home() {
             The structured prompt produces a narrower, more relevant and easier-to-review response.
           </p>
           <div className="text-center mt-8">
-            <Link className="b-btn" href="/prompting">
+            <a
+              className="b-btn"
+              href={`${GITHUB}/blob/main/templates/prompt-template.md`}
+              target="_blank"
+              rel="noopener"
+            >
               Open the Prompt Library
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -702,9 +715,14 @@ export default function Home() {
             <Link className="b-btn b-btn-primary" href="/prompting">
               Convert Your Prompt
             </Link>
-            <Link className="b-btn b-btn-yellow" href="/prompting">
+            <a
+              className="b-btn b-btn-yellow"
+              href={`${GITHUB}/blob/main/templates/prompt-template.md`}
+              target="_blank"
+              rel="noopener"
+            >
               Open the Prompt Library
-            </Link>
+            </a>
           </div>
           <p className="text-[0.85rem] text-ink-mute max-w-[560px] mx-auto mt-5">
             The converter improves prompt structure. It cannot compensate for missing context,
@@ -732,9 +750,14 @@ export default function Home() {
               ))}
             </div>
           </Reveal>
-          <Link className="b-btn" href="/prompting">
+          <a
+            className="b-btn"
+            href={`${GITHUB}/blob/main/templates/prompt-template.md`}
+            target="_blank"
+            rel="noopener"
+          >
             Open the Prompt Library
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -829,9 +852,14 @@ export default function Home() {
             <Link className="b-btn hover:bg-yellow" href="/prompting">
               Convert Your Prompt
             </Link>
-            <Link className="b-btn hover:bg-yellow" href="/prompting">
+            <a
+              className="b-btn hover:bg-yellow"
+              href={`${GITHUB}/blob/main/templates/prompt-template.md`}
+              target="_blank"
+              rel="noopener"
+            >
               Copy the Template
-            </Link>
+            </a>
           </div>
           <p className="text-[0.85rem] text-[#ffd9cc] mt-4">
             Open framework. Works with your existing AI tools.
