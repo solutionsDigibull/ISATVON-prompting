@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import DigiBullBadge from "@/components/DigiBullBadge";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import {
@@ -118,10 +115,7 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}');`}
         </Script>
-        <Nav />
         {children}
-        <Footer />
-        <DigiBullBadge />
         <Analytics />
         <SpeedInsights />
       </body>

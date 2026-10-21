@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Pipeline, SevenGrid } from "@/components/Framework";
 import Reveal from "@/components/Reveal";
-import { GITHUB, pageMeta } from "../config";
+import { GITHUB, pageMeta } from "../../config";
 
 const title = "How the ISATVON Framework Works";
 const description =

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMeta, GITHUB, DIGIBULL_URL } from "../config";
+import { pageMeta, GITHUB, DIGIBULL_URL } from "../../config";
 
 const title = "Terms of Use";
 const description = "Terms of use for the ISATVON website by DigiBull AI.";

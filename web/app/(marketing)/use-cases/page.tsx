@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import { pageMeta } from "../config";
+import { pageMeta } from "../../config";
 
 const title = "9 Ways the ISATVON Framework Helps Teams Build Better AI Workflows";
 const description =

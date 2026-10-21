@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Library from "@/components/Library";
-import { pageMeta } from "../config";
+import { pageMeta } from "../../config";
 
 const title = "Prompt Converter & Library";
 const description =

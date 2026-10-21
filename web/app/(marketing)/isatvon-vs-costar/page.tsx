@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import { pageMeta, GITHUB } from "../config";
+import { pageMeta, GITHUB } from "../../config";
 
 const title = "ISATVON vs COSTAR: Which Prompting Framework?";
 const description =

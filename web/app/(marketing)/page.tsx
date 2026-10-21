@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GITHUB } from "./config";
+import { GITHUB } from "../config";
 import { Pipeline, SevenGrid } from "@/components/Framework";
 import Reveal from "@/components/Reveal";
 
