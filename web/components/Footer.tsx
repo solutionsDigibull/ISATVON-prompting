@@ -15,7 +15,7 @@ const COLUMNS: [string, [string, string, boolean?][]][] = [
   [
     "Resources",
     [
-      ["/prompting", "Prompt Converter"],
+      ["https://app.isatvon.ai/", "Prompt Converter", true],
       [`${GITHUB}/blob/main/templates/prompt-template.md`, "Prompt Library", true],
       [`${GITHUB}/tree/main/examples`, "Examples", true],
       [`${GITHUB}/blob/main/INSTALL.md`, "Installation Guide", true],

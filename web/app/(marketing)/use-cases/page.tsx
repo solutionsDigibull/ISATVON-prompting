@@ -344,7 +344,7 @@ export default function UseCasesPage() {
           <p className="text-white font-semibold mb-7">
             Structure your AI. Scale your workflows. Build with confidence.
           </p>
-          <Link className="b-btn hover:bg-yellow" href="/prompting">
+          <Link className="b-btn hover:bg-yellow" href="https://app.isatvon.ai/">
             Start Building With ISATVON
           </Link>
         </div>

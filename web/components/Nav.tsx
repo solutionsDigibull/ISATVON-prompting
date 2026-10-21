@@ -94,7 +94,7 @@ export default function Nav() {
           >
             <Link
               className="b-btn b-btn-primary text-[0.95rem] px-[18px] py-[7px]"
-              href="/prompting"
+              href="https://app.isatvon.ai/"
             >
               Convert Your Prompt
             </Link>

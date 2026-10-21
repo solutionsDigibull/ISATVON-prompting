@@ -331,7 +331,7 @@ export default function VsCostarPage() {
             or broke a constraint, use ISATVON.
           </p>
           <div className="text-center mt-9">
-            <Link className="b-btn b-btn-primary" href="/prompting">
+            <Link className="b-btn b-btn-primary" href="https://app.isatvon.ai/">
               Convert Your Prompt
             </Link>
           </div>

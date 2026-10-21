@@ -98,7 +98,7 @@ export default function HowItWorksPage() {
             Try it on your next prompt
           </p>
           <div className="flex gap-[18px] justify-center flex-wrap">
-            <Link className="b-btn hover:bg-yellow" href="/prompting">
+            <Link className="b-btn hover:bg-yellow" href="https://app.isatvon.ai/">
               Convert Your Prompt
             </Link>
             <a

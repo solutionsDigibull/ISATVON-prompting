@@ -293,7 +293,7 @@ export default function Home() {
             </p>
             <Reveal delay={0.1}>
               <div className="flex gap-[18px] flex-wrap">
-                <Link className="b-btn b-btn-primary" href="/prompting">
+                <Link className="b-btn b-btn-primary" href="https://app.isatvon.ai/">
                   Convert Your Prompt
                 </Link>
                 <Link className="b-btn b-btn-yellow" href="/#framework">
@@ -468,7 +468,7 @@ export default function Home() {
             <Pipeline />
           </Reveal>
           <div className="text-center mt-11">
-            <Link className="b-btn b-btn-primary" href="/prompting">
+            <Link className="b-btn b-btn-primary" href="https://app.isatvon.ai/">
               Convert Your Prompt
             </Link>
           </div>
@@ -712,7 +712,7 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="flex gap-[18px] justify-center flex-wrap mt-7">
-            <Link className="b-btn b-btn-primary" href="/prompting">
+            <Link className="b-btn b-btn-primary" href="https://app.isatvon.ai/">
               Convert Your Prompt
             </Link>
             <a
@@ -744,7 +744,7 @@ export default function Home() {
           <Reveal>
             <div className="flex flex-wrap gap-3 justify-center mt-7 mb-12">
               {CHIPS.map((c) => (
-                <Link className="chip" href="/prompting" key={c}>
+                <Link className="chip" href="https://app.isatvon.ai/" key={c}>
                   {c}
                 </Link>
               ))}
@@ -849,7 +849,7 @@ export default function Home() {
             prompt.
           </p>
           <div className="flex gap-[18px] justify-center flex-wrap mb-[18px]">
-            <Link className="b-btn hover:bg-yellow" href="/prompting">
+            <Link className="b-btn hover:bg-yellow" href="https://app.isatvon.ai/">
               Convert Your Prompt
             </Link>
             <a
